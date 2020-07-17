@@ -6,7 +6,8 @@
 ex:
 編譯檔案: test.cpp 
 額外參數 arg1 arg2
-使用命令: run test arg1 arg2   即可執行 
+使用方法1: run test arg1 arg2       即可執行 
+使用方法2: run test.cpp arg1 arg2   即可執行 
  */
 
 #include<iostream>
@@ -26,6 +27,23 @@ string getArgument(int n ,const char ** argv)
     return arg;
 }
 
+string getFileName(string name)
+{
+
+    // case: "f"
+    if(name.size() <= 4)
+        return name;
+
+    // case: "file.cpp"
+    if( name.substr(name.length()-4).compare( ".cpp" ) == 0 )
+    {
+        name = name.substr(0 , name.length()-4);
+        return name;
+    }
+
+    // case: "file""
+    return name;
+}
 
 
 int main(int argc, char const *argv[])
@@ -42,14 +60,14 @@ int main(int argc, char const *argv[])
 
 
     // set parameter for system( .. )
-    string sFile = argv[1];                     // 編譯檔名
+    string sFile = getFileName(argv[1]);        // 編譯檔名
     string arg = getArgument(argc , argv);      // 執行參數    
     string command ;                            // 系統呼叫命令
 
     command = "g++ -g "  + sFile + ".cpp -o " +sFile  +" && " + sFile + " " + arg;
 
     std::cout << "compile " << argv[1] << ".cpp....." << endl;;
-    cout << command.c_str() << endl << endl;
+    cout << command.c_str() << endl << "............\n\n";
 
 
     system( command.c_str() );
