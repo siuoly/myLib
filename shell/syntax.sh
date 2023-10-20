@@ -1,3 +1,4 @@
+# Linux shell language syntax command
 # comparsing number
 x=1
 y=2
