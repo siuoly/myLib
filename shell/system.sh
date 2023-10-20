@@ -1,4 +1,4 @@
-#!/bin/bash
+# linux system command
 # show system information
 neofetch 
 uname --all

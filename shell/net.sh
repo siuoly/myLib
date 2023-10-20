@@ -1,4 +1,6 @@
 #!/bin/bash
+# network usage command
+
 
 ##############################################################################################################
 # cat /proc/net/dev # show network throughput, Packets number
