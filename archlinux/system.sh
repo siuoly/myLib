@@ -3,6 +3,9 @@
 neofetch 
 uname --all
 
+# show cpu information
+lscpu
+
 # show cuda version
 nvcc --version
 cat /usr/local/cuda/version.txt
