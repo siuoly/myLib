@@ -20,3 +20,14 @@ python3 -m pretty_errors # install it for all environment
         name = "custom"  # name it whatever you want
     )
 """
+from time import perf_counter
+class Timer():
+    def __init__(self,m="",file=None) -> None:
+        self.m= m
+        self.file=file
+    def __enter__(self):
+        self.s = perf_counter()
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        end= perf_counter()
+        print( f"{self.m} {end-self.s} sec",file=self.file)
+
