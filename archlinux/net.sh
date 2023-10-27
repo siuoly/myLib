@@ -1,7 +1,19 @@
 #!/bin/bash
 # network usage command
+#
+# show my ip address ipaddress, 
+curl ifconfig.me
+# show my ip to conuntry, GeoIP
+curl ipinfo.io/<ip> # e.g. curl ipinfo.io/140.118.223.25
 
+# domain / host to ip address
+getent hosts google.com # or. getent ahostsv4 google.com # fist selection
+host google.com  # default not installed
+nslookup google.com
 
+# network speed testing
+pacman -S speedtest-cli
+speedtest-cli
 ##############################################################################################################
 # cat /proc/net/dev # show network throughput, Packets number
 ##############################################################################################################
