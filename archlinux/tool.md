@@ -3,6 +3,7 @@ path1: ~/.local/share/fonts/ , user manually installed, system-wise
 path2: /usr/share/fonts ,  package mamager installed
 
 ```sh
+fc-list |sort # list all usable fonts
 pacman -Qs fonts  # search installed package which name contain "fonts"
 pacman -Qs ttf  
 cd /usr/share/fonts
@@ -16,4 +17,26 @@ adobe-source-han-sans-tw-fonts: 思源黑體
     sans (sans-serif,無襯線字體)，通常這是大部份程式預設使用的字體
     serif (有襯線字體)
     monospace (等寬字體)，通常終端機會使用此字體
+
+# brightness
+[from](https://unix.stackexchange.com/questions/526653/control-screen-brightness-in-i3)
+```sh
+pacman -S brightness
+brightness s 50%   # +50%
+```
+
+# temperature color
+```sh
+pacman -S redshift
+redshift -O 3500K
+
+pacman -S xsct
+xsct <temperature> <brightness>
+e.g. xsct 3000 0.8
+```
+
+# keybaord repeat speed
+```sh
+x r rate 200 50 # 1:<time to starte repeat(ms)>  2:<repeat speed>
+```
 

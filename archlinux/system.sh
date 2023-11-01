@@ -19,3 +19,8 @@ nvidia-smi
 # comparing to x86, which is 32 bit register. ps.: x86=i386=IA32.
 # comparing to arm, ppc ,these is diff ISA.
 
+# terminfo
+sudo tic -xs <xxx.info> # make terminfo file to /usr/share/terminfo
+# that system known your system, e.g. archlinux AUR: xst-git
+
+
