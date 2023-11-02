@@ -23,4 +23,9 @@ nvidia-smi
 sudo tic -xs <xxx.info> # make terminfo file to /usr/share/terminfo
 # that system known your system, e.g. archlinux AUR: xst-git
 
-
+# usb using
+lsblk # check usb usage
+mkdir /mnt/usb
+sudo mount /dev/<device> /mnt/usb # e.g. mount /dev/seb /mnt/usb
+chown $USER /mnt/usb # for presonal usage
+umount /mnt/usb # remove usb

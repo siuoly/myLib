@@ -18,25 +18,46 @@ adobe-source-han-sans-tw-fonts: 思源黑體
     serif (有襯線字體)
     monospace (等寬字體)，通常終端機會使用此字體
 
-# brightness
-[from](https://unix.stackexchange.com/questions/526653/control-screen-brightness-in-i3)
+# brightness temperature color
 ```sh
-pacman -S brightness
-brightness s 50%   # +50%
-```
-
-# temperature color
-```sh
-pacman -S redshift
+pacman -S brightness redshift xsct
+brightness s 50%   # or +50%
 redshift -O 3500K
-
-pacman -S xsct
-xsct <temperature> <brightness>
-e.g. xsct 3000 0.8
+xsct <temperature> <brightness> # xsct 3000 0.8
 ```
 
 # keybaord repeat speed
 ```sh
-x r rate 200 50 # 1:<time to starte repeat(ms)>  2:<repeat speed>
+xset r rate 200 50 # 1:<time to starte repeat(ms)>  2:<repeat speed>
 ```
 
+# file explorer: ranger preview image
+```conf
+/home/siuoly/.config/ranger/rc.conf
+set preview_images true
+```
+
+# power setting
+```sh
+upower -d 
+tlp-stat -s # show tlp status
+tlp-stat --battery  # show battery
+tlp-stat -p # show cpu performance
+
+# /etc/tlp.conf
+START_CHARGE_THRESH_BAT1=80
+STOP_CHARGE_THRESH_BAT1=95
+
+#CPU_ENERGY_PERF_POLICY_ON_AC=balance_performance
+#CPU_ENERGY_PERF_POLICY_ON_BAT=balance_power
+#CPU_MIN_PERF_ON_BAT=0
+#CPU_MAX_PERF_ON_BAT=30 --> 60
+```
+
+# rofi setting
+```
+rofi -dump-config > ./config/rofi/config.rasi
+terminal: xst
+```
+
+: vim: nospell:
