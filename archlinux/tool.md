@@ -22,6 +22,8 @@ adobe-source-han-sans-tw-fonts: 思源黑體
 ```sh
 pacman -S brightness redshift xsct
 brightness s 50%   # or +50%
+#bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl s +10%"
+#bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl s 10%-"
 redshift -O 3500K
 xsct <temperature> <brightness> # xsct 3000 0.8
 ```
@@ -58,6 +60,12 @@ STOP_CHARGE_THRESH_BAT1=95
 ```
 rofi -dump-config > ./config/rofi/config.rasi
 terminal: xst
+```
+
+# screenshot
+```
+pacman -S maim
+maim home/$USER/Pictures/$(date).png
 ```
 
 : vim: nospell:
