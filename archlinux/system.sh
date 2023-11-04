@@ -29,3 +29,4 @@ mkdir /mnt/usb
 sudo mount /dev/<device> /mnt/usb # e.g. mount /dev/seb /mnt/usb
 chown $USER /mnt/usb # for presonal usage
 umount /mnt/usb # remove usb
+
