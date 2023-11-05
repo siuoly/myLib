@@ -14,3 +14,9 @@ HOST *
   ForwardX11Trusted yes # must
 ```
 
+# ssh server speed too slow, ssh connection speed slow
+    Laggy SSH sessions on local network: https://askubuntu.com/questions/438862/ssh-working-so-slow?newreg=1c93b9ca58a245e6b54f34ae4483b1b9
+In server host, do
+`sudo iw <ADAPTER> set power_save off`
+
+vim: nospell :
