@@ -1,6 +1,7 @@
 # linux system command
 # show system information
 neofetch 
+hostnamectl
 uname --all
 
 # show cpu information
