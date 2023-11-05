@@ -1,19 +1,23 @@
 #!/bin/bash
 # network usage command
-#
+
 # show my ip address ipaddress, 
 curl ifconfig.me
 # show my ip to conuntry, GeoIP
 curl ipinfo.io/<ip> # e.g. curl ipinfo.io/140.118.223.25
 
-# domain / host to ip address
+# domain / host to ip address dns lookup
 getent hosts google.com # or. getent ahostsv4 google.com # fist selection
 host google.com  # default not installed
 nslookup google.com
 
-# network speed testing
-pacman -S speedtest-cli
-speedtest-cli
+
+# network speed testing ,network speed monitor
+yay -S speedtest-cli bmon iftop
+speedtest-cli      # show network speed loading
+bmon [-p <adaptor>]   # show adaptor usage history graph
+sudo iftop -i <adaptor> # show each connection usage
+
 ##############################################################################################################
 # cat /proc/net/dev # show network throughput, Packets number
 ##############################################################################################################
