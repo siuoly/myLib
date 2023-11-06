@@ -68,4 +68,11 @@ pacman -S maim
 maim home/$USER/Pictures/$(date).png
 ```
 
+# sha256sum checksum
+```sh
+echo "$(cat archive.tar.gz.sha256) archive.tar.gz" | sha256sum --check --status
+echo "028cfaaf551d64cbb2f39d15363ed78edb01e2673579b48cb694e3604207d656 nvim.appimage" |sha256sum --check
+sha256sum <file> # manually comparing
+```
+
 : vim: nospell:
