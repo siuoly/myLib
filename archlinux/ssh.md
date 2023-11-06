@@ -19,4 +19,11 @@ HOST *
 In server host, do
 `sudo iw <ADAPTER> set power_save off`
 
+# X11 server forwarding DISPLAY
+edit: /etc/ssh/sshd_config
+    X11Forwarding yes
+systemctl restart sshd
+
+
+
 vim: nospell :
