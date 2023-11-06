@@ -6,6 +6,10 @@ uname --all
 # show cpu information
 lscpu
 
+# show disk information, disk specification
+sudo lshw -class storage
+sudo smartctl -a /dev/sda
+
 # show cuda version
 nvcc --version
 cat /usr/local/cuda/version.txt
