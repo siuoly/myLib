@@ -62,6 +62,7 @@ pacman -S xorg xorg-server xinit xterm
 pacman -S pulseaudio pulseaudio-bluetooth intel-ucode 
 pacman -S sudo zsh git openssh fakeroot base-devel # 開發工具
 pacman -S grub efibootmgr
+pacman -S maim feh ranger
 nvtop # optional 
 
 
