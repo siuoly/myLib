@@ -57,10 +57,12 @@ echo "::1 localhost" >> /etc/hosts
 echo "127.0.1.1 HostName-eg-ArchLinux" >> /etc/hosts
 
 # pacman firmware install, base tool
-pacman -S networkmanager bluze 
-pacman -S xorg xorg-server xinit xterm
-pacman -S pulseaudio pulseaudio-bluetooth intel-ucode 
-pacman -S sudo zsh git openssh fakeroot base-devel # 開發工具
+pacman -S networkmanager strongswan
+pacman -S bluez  bluez-utils pulseaudio pulseaudio-bluetooth intel-ucode 
+pacman -S xorg xorg-server xinit xterm fuse unzip upower python tlp 
+pacman -S xclip ripgrep zoxide htop pacman-contrib brightnessctl
+pacman -S fuse unzip upower tlp python 
+pacman -S sudo zsh git openssh fakeroot base-devel wget # 開發工具
 pacman -S grub efibootmgr
 pacman -S maim feh ranger
 nvtop # optional 
@@ -85,9 +87,8 @@ pacman -S i3wm polybar
 # in ~/.xinitrc: add exec i3
 
 # kde
-pacman -S plasma-meta kde-applications plasma-wayland-session packagekit-qt5 konsole dolphin
-# sddm (login window tool)
-systemctl enable sddm.service
+pacman -S plasma-meta kde-applications plasma-wayland-session packagekit-qt5 konsole dolphin plasma-nm  networkmanager-l2tp kscreen sddm-kcm
+systemctl enable sddm.service # sddm (login window tool)
 
 # exit
 systemctl enable NetworkManager
@@ -100,17 +101,24 @@ shutdown now
 #############################################################33
 pacman -S noto-fonts-cjk noto-fonts-emoji # font
 pacman -S firefox
-pacman -S fcitx5-im fcitx5-chewing
+pacman -S fcitx5-im fcitx5-chewing fcitx5-rime # inputmethod
 
 ## yay
 pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
-yay ly xsct xst keyd
+# yay use packager
+yay ly xsct xst keyd ttf-comic-mono-git rofi-bluetooth-git
+pacman -S otf-comicshanns-nerd
+
+## tailscale
+curl -fsSL https://tailscale.com/install.sh | sh
 
 ## nvim:
-wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+wget https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage
+
 mv nvim.appimage ~/.local/bin/nvim
 cd ~/.local/bin/
 ln -s nvim nv
+pip install neovim
 
 
 ## oh-my-zsh oh my zsh
@@ -126,7 +134,8 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
-## tailscale
-curl -fsSL https://tailscale.com/install.sh | sh
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 ## copytranslator
