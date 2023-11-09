@@ -107,7 +107,7 @@ pacman -S fcitx5-im fcitx5-chewing fcitx5-rime # inputmethod
 pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
 # yay use packager
 yay ly xsct xst keyd ttf-comic-mono-git rofi-bluetooth-git
-pacman -S otf-comicshanns-nerd
+pacman -S otf-comicshanns-nerd ttf-lxgw-wenkai ttf-maple
 
 ## tailscale
 curl -fsSL https://tailscale.com/install.sh | sh
