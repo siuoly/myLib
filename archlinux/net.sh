@@ -18,6 +18,21 @@ speedtest-cli      # show network speed loading
 bmon [-p <adaptor>]   # show adaptor usage history graph
 sudo iftop -i <adaptor> # show each connection usage
 
+############################################################################################################
+# setup L2TP IPsec VPN in archlinux using NetworkManager
+# from https://gist.github.com/pastleo/aa3a9524664864c505d637b771d079c9
+pacman -S networkmanager-l2tp strongswan
+nmcli c add con-name CON_NAME type vpn vpn-type l2tp vpn.data 'gateway=GATEWAY_HOST, ipsec-enabled=yes, ipsec-psk=PRE_SHARED_KEY, password-flags=1, user=USERNAME'
+nmcli c edit CON_NAME # interactive mode, type help for manual
+nmcli c up CON_NAME
+nmcli c down CON_NAME
+nmcli c delete CON_NAME
+password-flags=0 => Save password in plain text
+password-flags=1 => Save encrypted password
+password-flags=2 => Don't save password, ask when needed
+    when using this, nmcli c up CON_NAME --ask is needed
+"
+
 ##############################################################################################################
 # cat /proc/net/dev # show network throughput, Packets number
 ##############################################################################################################
@@ -28,6 +43,7 @@ printf "%-12s %12s %12s %8s %8s %8s %8s %12s %12s %12s %8s %8s %8s %8s\n" \
   "TX MB" "TX Packets" "TX Errs" "TX Drop" "TX FIFO"
 
 # 打印分隔线
+
 printf "=============================================================================================\n"
 
 # 使用 awk 处理数据并格式化输出
