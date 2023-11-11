@@ -1,5 +1,9 @@
 #!/bin/bash
 # network usage command
+nmtui
+nm-connection-editor # edit network setting
+nmcli radio wifi on
+nmcli radio wifi off
 
 # show my ip address ipaddress, 
 curl ifconfig.me
