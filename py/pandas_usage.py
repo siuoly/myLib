@@ -9,5 +9,6 @@ df.loc[:,("A","y")]
 df.loc[:,"A"]
 df.loc[:,"y"] # error
 
-
-#
+# seriet string to label, label encoding 
+def get_series_encode(series): # Label encoding pd.series data
+    return series.astype("category").cat.codes.astype(int)
