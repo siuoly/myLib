@@ -57,7 +57,7 @@ echo "::1 localhost" >> /etc/hosts
 echo "127.0.1.1 HostName-eg-ArchLinux" >> /etc/hosts
 
 # pacman firmware install, base tool
-pacman -S networkmanager strongswan
+pacman -S networkmanager strongswan network-manager-applet
 pacman -S bluez  bluez-utils pulseaudio pulseaudio-bluetooth intel-ucode 
 pacman -S xorg xorg-server xinit xterm fuse unzip upower python tlp 
 pacman -S xclip ripgrep zoxide htop pacman-contrib brightnessctl
@@ -101,7 +101,8 @@ shutdown now
 #############################################################33
 pacman -S noto-fonts-cjk noto-fonts-emoji # font
 pacman -S firefox
-pacman -S fcitx5-im fcitx5-chewing fcitx5-rime # inputmethod
+pacman -S fcitx5-im fcitx5-chewing fcitx5-rime # IME input method
+pacman -S visual-studio-code-bin libreoffice-still-zh-tw
 
 ## yay
 pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
