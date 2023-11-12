@@ -57,13 +57,13 @@ STOP_CHARGE_THRESH_BAT1=95
 ```
 
 # rofi setting
-```
+```sh
 rofi -dump-config > ./config/rofi/config.rasi
 terminal: xst
 ```
 
 # screenshot
-```
+```sh
 pacman -S maim
 maim home/$USER/Pictures/$(date).png
 ```
@@ -73,6 +73,21 @@ maim home/$USER/Pictures/$(date).png
 echo "$(cat archive.tar.gz.sha256) archive.tar.gz" | sha256sum --check --status
 echo "028cfaaf551d64cbb2f39d15363ed78edb01e2673579b48cb694e3604207d656 nvim.appimage" |sha256sum --check
 sha256sum <file> # manually comparing
+```
+
+# Thinkpad trackpoint small redpoint speed
+```sh
+echo 255 > /sys/bus/serio/devices/serio2/sensitivity  # origin:200
+echo 255 > /sys/bus/serio/devices/serio2/speed   # origin:97
+```
+
+# man
+```sh
+man -k <search> # search target page
+man -f <smail> # show shot description, the same woth `whatis <smail>`
+man <page>.n  # open page (n), e.g.: man swapon.8
+man n page # alias above
+
 ```
 
 : vim: nospell:
