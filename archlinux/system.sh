@@ -35,3 +35,21 @@ sudo mount /dev/<device> /mnt/usb # e.g. mount /dev/seb /mnt/usb
 chown $USER /mnt/usb # for presonal usage
 umount /mnt/usb # remove usb
 
+# create swap 
+## from https://linuxize.com/post/create-a-linux-swap-file/
+sudo fallocate -l 8G /swapfile # or following ,optional
+# sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576 # 1024*1024=1048576(1G)
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+      # edit /etc/fstab
+      /swapfile swap swap defaults 0 0 # add new line
+sudo swapon --show # test success
+sudo free -h
+
+# remove swap
+sudo swapoff -v /swapfile
+      # edit /etc/fstab
+      /swapfile swap swap defaults 0 0 # remove line
+sudo rm /swapfile
+
