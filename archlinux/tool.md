@@ -87,7 +87,22 @@ man -k <search> # search target page
 man -f <smail> # show shot description, the same woth `whatis <smail>`
 man <page>.n  # open page (n), e.g.: man swapon.8
 man n page # alias above
-
 ```
+
+# media player
+pacman -S mpv
+# sound tune
+pacman -S alsa-utils
+alsamixer # terminal gui tune sound 
+pacman -S pavucontrol
+pavucontrol # better than alsamixer
+
+# tailscale
+pkill -9 NetworkManager # solve /etc/resolv.conf dns problem
+
+
+
+
+
 
 : vim: nospell:
