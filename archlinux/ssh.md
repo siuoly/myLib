@@ -24,6 +24,12 @@ edit: /etc/ssh/sshd_config
     X11Forwarding yes
 systemctl restart sshd
 
+# remote folder mount sshfs
+sudo pacman -S sshfs
+mkdir MOUTN_DIR
+sshfs NAME@HOST:/path/to/folder MOUTN_DIR
+
+fusermount -u MOUTN_DIR # unmount directory
 
 
 vim: nospell :
