@@ -35,6 +35,7 @@ sudo mount /dev/<device> /mnt/usb # e.g. mount /dev/seb /mnt/usb
 chown $USER /mnt/usb # for presonal usage
 umount /mnt/usb # remove usb
 
+#################################################################################################3
 # create swap 
 ## from https://linuxize.com/post/create-a-linux-swap-file/
 sudo fallocate -l 8G /swapfile # or following ,optional
@@ -52,4 +53,14 @@ sudo swapoff -v /swapfile
       # edit /etc/fstab
       /swapfile swap swap defaults 0 0 # remove line
 sudo rm /swapfile
+
+#################################################################################################3
+# How do I prevent mouse movement from waking up a suspended computer?
+## https://askubuntu.com/a/1385877/1743532
+lsusb # find {vender}:{product}
+sudo nv /etc/udev/rules.d/90-usb-wakeup.rules
+# add:  ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c52b", ATTR{power/wakeup}="disabled"
+# modify vender,product string
+sudo udevadm control --reload-rules
+# Disconnect and reconnect the USB device.
 

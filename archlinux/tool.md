@@ -2,6 +2,8 @@
 path1: ~/.local/share/fonts/ , user manually installed, system-wise
 path2: /usr/share/fonts ,  package mamager installed
 
+put unzipped fonts at ~/.local/share/fonts/, thus fonts have been installed.
+
 ```sh
 fc-list |sort # list all usable fonts
 pacman -Qs fonts  # search installed package which name contain "fonts"
@@ -9,6 +11,7 @@ pacman -Qs ttf
 cd /usr/share/fonts
 fd --type=file --extension=otf --extension=ttf --extension=ttc
 ```
+
 CJK字型是包含所有中日韓統一表意文字的電腦字體。
 宋體（或稱明體，歐美稱襯線體）、黑體（歐美稱非襯線體）、楷體、隸書體等多種類手寫體。 
 黑體是漢字和其他東亞文字使用的字體。它的特點是筆畫厚度均勻，與白體相反，和拉丁字母的無襯線體（英語：sans-serif）屬於同類。
@@ -75,7 +78,7 @@ echo "028cfaaf551d64cbb2f39d15363ed78edb01e2673579b48cb694e3604207d656 nvim.appi
 sha256sum <file> # manually comparing
 ```
 
-# Thinkpad trackpoint small redpoint speed
+# Thinkpad trackpoint speed small redpoint speed
 ```sh
 echo 255 > /sys/bus/serio/devices/serio2/sensitivity  # origin:200
 echo 255 > /sys/bus/serio/devices/serio2/speed   # origin:97
@@ -100,7 +103,14 @@ pavucontrol # better than alsamixer
 # tailscale
 pkill -9 NetworkManager # solve /etc/resolv.conf dns problem
 
+# xst config
+yay -S xst
+~/.cache/yay/xst/src/xst/config.def.h: int scrollrate = 5; # default 1, make it speed up 
+make && sudo make install
 
+# disk partition
+    > expand efi system partition
+`yay -S gparted`
 
 
 

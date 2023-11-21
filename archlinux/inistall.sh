@@ -99,7 +99,7 @@ umount /mnt
 shutdown now
     拔掉開機隨身碟後重開機。
 #############################################################33
-pacman -S noto-fonts-cjk noto-fonts-emoji # font
+pacman -S noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd # font
 pacman -S firefox
 pacman -S fcitx5-im fcitx5-chewing fcitx5-rime # IME input method
 pacman -S visual-studio-code-bin libreoffice-still-zh-tw pavucontrol # sound testing
@@ -108,7 +108,7 @@ pacman -S visual-studio-code-bin libreoffice-still-zh-tw pavucontrol # sound tes
 ## yay
 pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
 # yay tool use packager
-yay ly xsct xst keyd ttf-comic-mono-git rofi-bluetooth-git copytranslator-bin
+yay -S ly xsct xst keyd ttf-comic-mono-git rofi-bluetooth-git copytranslator-bin
 pacman -S otf-comicshanns-nerd ttf-lxgw-wenkai ttf-maple
 
 ## tailscale
