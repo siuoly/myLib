@@ -99,7 +99,7 @@ umount /mnt
 shutdown now
     拔掉開機隨身碟後重開機。
 #############################################################33
-pacman -S noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd # font
+pacman -S noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd otf-droid-nerd # font 
 pacman -S firefox
 pacman -S fcitx5-im fcitx5-chewing fcitx5-rime # IME input method
 pacman -S visual-studio-code-bin libreoffice-still-zh-tw pavucontrol # sound testing

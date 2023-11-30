@@ -31,12 +31,11 @@ nmcli c edit CON_NAME # interactive mode, type help for manual
 nmcli c up CON_NAME
 nmcli c down CON_NAME
 nmcli c delete CON_NAME
+"
 password-flags=0 => Save password in plain text
 password-flags=1 => Save encrypted password
-password-flags=2 => Don't save password, ask when needed
-    when using this, nmcli c up CON_NAME --ask is needed
+password-flags=2 => Don't save password, ask when needed when using this, nmcli c up CON_NAME --ask is needed 
 "
-
 ##############################################################################################################
 # cat /proc/net/dev # show network throughput, Packets number
 ##############################################################################################################
@@ -56,5 +55,9 @@ awk 'NR > 2 {
   tx_mb = $10 / 1024 / 1024; # 将传输字节数转换为MB
   printf "%-12s %12.2f %12s %8s %8s %8s %8s %12s %12s %12s %8s %8s %8s %8s\n", $1, rx_mb, $3, $4, $5, $6, $7, $8, $9, tx_mb, $11, $12, $13, $14
 }' /proc/net/dev
+
 ##############################################################################################################
+
+#tool ifconfig
+pacman -S net-tools
 
