@@ -1,3 +1,21 @@
+# pacman usage
+```sh
+pacman -Ss "keyword.."  # find package from online by any length of keyword
+pacman -Qs "keyword.." # find package from local installed packages
+
+sudo pacman -S "package" # install package , nage must match exclude package version
+sudo pacman -R "package" # remove package
+sudo pacman -Rs "package" # remove package as its dependency not used by other package
+sudo pacman -R $(pacman -Qtdq) # remove all package not be dependency
+
+pacmam -Qi "pacmam" # print info of the package
+pacman -Ql "package" # list all file which created by the package
+pacman -Qo "executable_cmd/file"  # find package by execuble or file
+
+pacman -Sy # update database, -Syy force even if it is latest
+
+pacman -Qqtd # find package installed as dependency but now not be dependent(orphan)
+```
 # Fonts, fonts
 path1: ~/.local/share/fonts/ , user manually installed, system-wise
 path2: /usr/share/fonts ,  package mamager installed
@@ -27,7 +45,7 @@ pacman -S brightness redshift xsct
 brightness s 50%   # or +50%
 #bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl s +10%"
 #bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl s 10%-"
-redshift -O 3500K
+redshift -PO 3500K
 xsct <temperature> <brightness> # xsct 3000 0.8
 ```
 
