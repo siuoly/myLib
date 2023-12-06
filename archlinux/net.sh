@@ -4,6 +4,7 @@ nmtui
 nm-connection-editor # edit network setting
 nmcli radio wifi on
 nmcli radio wifi off
+nmcli device wifi rescan
 
 # show my ip address ipaddress, 
 curl ifconfig.me
@@ -61,3 +62,8 @@ awk 'NR > 2 {
 #tool ifconfig
 pacman -S net-tools
 
+# show using ip port
+sudo lsof -nPi
+# -n: using numeric domain without dns transfered
+# -P: using numeric port instead of service name(e.g. https->443)
+# -i: show network file only,exclude general open files
