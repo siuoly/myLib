@@ -53,6 +53,18 @@ xsct <temperature> <brightness> # xsct 3000 0.8
 ```sh
 xset r rate 200 50 # 1:<time to starte repeat(ms)>  2:<repeat speed>
 ```
+# screen saver control 關閉螢幕保護程式 
+```sh
+xset s off
+```
+
+# prevent external monitor turn off
+```sh
+xset dpms 600 0 0 # standby:600 sec, suspend:disable, off:disable
+```
+
+# i3 disable screen saver
+`exec --no-startup-id xset dpms 600 0 0 s off`
 
 # file explorer: ranger preview image
 ```conf
@@ -98,8 +110,20 @@ sha256sum <file> # manually comparing
 
 # Thinkpad trackpoint speed small redpoint speed
 ```sh
-echo 255 > /sys/bus/serio/devices/serio2/sensitivity  # origin:200
-echo 255 > /sys/bus/serio/devices/serio2/speed   # origin:97
+# 1. find config file path
+find /sys/devices/platform/i8042 -name name | xargs grep -Fl TrackPoint | sed 's/\/input\/input[0-9]*\/name$//'
+# 2. output target info
+cat /sys/devices/platform/i8042/serio1/serio2/{sensitivity,speed}
+# 3. sudo write indicated number to configure file
+echo 255 |sudo tee /sys/devices/platform/i8042/serio1/serio2/sensitivity  # origin:200
+echo 255 |sudo tee /sys/devices/platform/i8042/serio1/serio2/speed   # origin:97
+
+# 4. add udev rule, append following declaration
+nvim /etc/udev/rules.d/trackpoint.rules
+SUBSYSTEM=="serio", DRIVERS=="psmouse", DEVPATH=="/sys/devices/platform/i8042/serio1/serio2", ATTR{sensitivity}="220", ATTR{speed}="110"
+# 5. reboot or run following command enble setting
+sudo udevadm control --reload-rules
+sudo udevadm trigger
 ```
 
 # man

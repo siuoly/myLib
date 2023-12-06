@@ -51,7 +51,7 @@ mosh USER@HOST  # default create connection on udp 600001 port
     > https://www.reddit.com/r/vim/comments/k1ydpn/a_guide_on_how_to_copy_text_from_anywhere/
     > https://github.com/ojroques/nvim-osc52
 
-## ssh remote server as proxy
+## ssh remote server as proxy, ssh dynamic port forwarding, SOCKS5
 ```sh
 ssh -N -f -D 8081 user@host 
 -D 8081 指的是將通往 8081 port 的連線轉往 SSH 伺服器
