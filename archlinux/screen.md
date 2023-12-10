@@ -27,5 +27,22 @@ skip-options=gamma
 # skip gamma setting for xsct
 ```
 
+# add virtual screen for deskreen ,weylus
+```sh
+cvt 1200 900 # get mode line format
+ xrandr --newmode "1200x900_60.00"   88.50  1200 1272 1392 1584  900 903 907 934 -hsync +vsync
+ xrandr --addmode HDMI-1  "1200x900_60.00"  # recommend use HDMI, DP has unknown bugs.
+ xrandr --output HDMI-1 --mode "1200x900_60.00" --below HDMI-2
+```
+> ref: https://bbs.archlinux.org/viewtopic.php?id=286384
+> 
+
+# tools
+```sh
+yay -S arandr # gui tool manage monitor
+yay -S lxrandr-gtk3 # light weight manage monitor
+```
+
+
 
 vim: nospell
