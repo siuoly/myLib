@@ -10,6 +10,9 @@ countdown() {
         sleep 0.1
     done
 }
+mcountdown(){
+  countdown "60 * $1"
+}
 stopwatch() {
     start=$(date +%s)
     while true; do
