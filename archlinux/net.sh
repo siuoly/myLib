@@ -67,3 +67,6 @@ sudo lsof -nPi
 # -n: using numeric domain without dns transfered
 # -P: using numeric port instead of service name(e.g. https->443)
 # -i: show network file only,exclude general open files
+
+sudo ss -nutp # mean --numeric --udp --tcp --process 
+sudo ss -nutap # -a: --all type connectoin(e.g. LISTEN,UNCONN) 

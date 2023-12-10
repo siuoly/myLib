@@ -136,6 +136,7 @@ man n page # alias above
 
 # media player
 pacman -S mpv
+
 # sound tune
 pacman -S alsa-utils
 alsamixer # terminal gui tune sound 
@@ -154,7 +155,22 @@ make && sudo make install
     > expand efi system partition
 `yay -S gparted`
 
+# browser as terminal
+## ttyd
+share terminal on browser
+使用情境，在A電腦上，*臨時*分享其terminal，給B主機（手機,電腦,平板）的瀏覽器上使用。
+```sh
+pacman -S ttyd
+ttyd zsh
+ip -brief addr # find my ip address
+# another PC, iphone browser-> url:IP:7681 ,then can run the brower
+```
 
+## gotty
+```sh
+pacman -S gotty  # old version
+pacman -S gotty-client # 在terminal 開啓別人分享的terminal
+```
 
 
 : vim: nospell:
