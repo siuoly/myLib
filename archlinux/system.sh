@@ -35,6 +35,11 @@ sudo mount /dev/<device> /mnt/usb # e.g. mount /dev/seb /mnt/usb
 chown $USER /mnt/usb # for presonal usage
 umount /mnt/usb # remove usb
 
+# usermod
+usermod -aG <groups> <users> # e.g. usermod -aG docker siuoly
+id -Gn # show what group user be in
+groups # show what group user be in
+
 #################################################################################################3
 # create swap 
 ## from https://linuxize.com/post/create-a-linux-swap-file/
