@@ -55,6 +55,12 @@ xsct <temperature> <brightness> # xsct 3000 0.8
 ```sh
 xset r rate 200 50 # 1:<time to starte repeat(ms)>  2:<repeat speed>
 ```
+# mouse move speed set
+```sh
+xinput --list # check id=<id>
+xinput --list-props <id> # check attribute(<attr>): number
+xinput --set-prop <id> <attr> <value>
+```
 # screen saver control 關閉螢幕保護程式 
 ```sh
 xset s off
