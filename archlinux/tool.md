@@ -180,5 +180,24 @@ pacman -S gotty  # old version
 pacman -S gotty-client # 在terminal 開啓別人分享的terminal
 ```
 
+## dictionary
+```sh
+pacman -S translate-shell # google online 多國翻譯
+trans "good" # goodl dictionary
+trans :zh-TW "good" # chinese
+trans :zh-TW+en "good"  # output chinese + english
+
+pacman -S wudao-dict-git # 有道字典命令行版, 剛好足夠
+wd "good"
+
+pacman -S sdcv  # offline 星際譯王 starDict
+# 下載字典
+# 1. https://blog.yuaner.tw/old/%E7%9B%AE%E5%89%8D%E6%AE%98%E7%95%99%E7%9A%84%E6%98%9F%E9%9A%9B%E8%AD%AF%E7%8E%8B%E5%AD%97%E5%85%B8%E6%AA%94/
+# 2. https://kdr2.com/resource/stardict.html
+tar jxvf xxxx.tar.bz2 -C $HOME/.stardict/dic/ # 解壓縮字典到指定目錄
+sdcv -l # list available dict
+sdcv "good" 
+mkdir -p $HOME/.stardict/dic/  # 字典路徑位置
+```
 
 : vim: nospell:
