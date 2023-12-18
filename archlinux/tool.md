@@ -1,11 +1,13 @@
 # pacman usage
 ```sh
+# search
 pacman -Ss "keyword.."  # find package from online by any length of keyword
 pacman -Qs "keyword.." # find package from local installed packages
+pacman -Qm # list AUR package (not found in sync db)
 
 sudo pacman -S "package" # install package , nage must match exclude package version
 sudo pacman -R "package" # remove package
-sudo pacman -Rs "package" # remove package as its dependency not used by other package
+sudo pacman -Rs "package" # remove package and its dependency not used by other packages
 sudo pacman -R $(pacman -Qtdq) # remove all package not be dependency
 
 pacmam -Qi "pacmam" # print info of the package
