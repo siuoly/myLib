@@ -43,8 +43,21 @@ who | awk 'BEGIN {print "Active Sessions"} {print $1,$4}'
 awk 'BEGIN { print sqrt(625)}'
 awk 'BEGIN {print atan2(0, -1)}'
 awk 'BEGIN {printf "%.2f", 0.13+0.32}' # round off result
+          # computation total install size(MiB only)
+pacman -Qi  |awk '/^Name/{name=$3} /Installed Size/{print $4 $5, name}' |sort -h| grep MiB |awk '{size+=$1} END {printf "%.2fGiB", size/2^10}'
+
+
+# e.g. awk parse time epoch format
+"1702300527      3741.000        discharging
+1702300557      3558.000        discharging
+1702300587      3382.000        discharging
+1702300617      3283.000        discharging
+1702300647      3092.000        discharging " # /var/lib/history-time-empty.dat
+awk '{print strftime("%F %T",$1) " "$2" "$3}' /var/lib/history-time-empty.dat
 
 # grep usage
 ss |grep -i "tcp" # -i:ignore find line contain "tcp" or "TCP"
 ss -tuap |grep -o "fd=[0-9]\+" # find and show only the pattern
+pacman -Qqe |grep -v "$(pacman -Qqm)" # -v inverse match, filter package, 
+# enclose by "" make is interpret as string, otherwith it would be seen as many files
 
