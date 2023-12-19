@@ -80,23 +80,6 @@ xset dpms 600 0 0 # standby:600 sec, suspend:disable, off:disable
 set preview_images true
 ```
 
-# power setting
-```sh
-upower -d 
-tlp-stat -s # show tlp status
-tlp-stat --battery  # show battery
-tlp-stat -p # show cpu performance
-
-# /etc/tlp.conf
-START_CHARGE_THRESH_BAT1=80
-STOP_CHARGE_THRESH_BAT1=95
-
-#CPU_ENERGY_PERF_POLICY_ON_AC=balance_performance
-#CPU_ENERGY_PERF_POLICY_ON_BAT=balance_power
-#CPU_MIN_PERF_ON_BAT=0
-#CPU_MAX_PERF_ON_BAT=30 --> 60
-```
-
 # rofi setting
 ```sh
 rofi -dump-config > ./config/rofi/config.rasi
