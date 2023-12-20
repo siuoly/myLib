@@ -13,6 +13,17 @@ unzip -O big5 file.zip # unzip traditional chinese archive 繁體中文解壓縮
 # cut usage
 echo "aaa bbb ccc" |cut -d' ' -f 2 # use ' ' separator instead of tab, select 2nd col ('bbb')
 
+# sed usage ref: https://www.hy-star.com.tw/tech/linux/sed/sed.html
+##  例如我要把檔案〝MyFile.txt〞的 1~8 行中的〝The〞或〝the〞改為大寫的〝THE〞可如下:
+sed -e '1,8 s/ [Tt]he/ THE/g' MyFile.txt
+echo 'This is a bool'|sed 's/<is>/IS/g' # regular expression, This 不改變
+df -h| sed -E 's/ +/,/g' # csv format output
+echo "this is a apple"|sed -e 's/a/an' -e 's/apple/APPLE' # 多命令,也可用pipe完成
+sed '3,$ s/^can/CAN/' file # 3~last line 開頭的can改爲大寫
+
+# column usage # simple csv file format reader
+column -s"," -t "<file>" |nvim
+
 # awk usage
 "                    file: information.txt:
 fristName       lastName        age     city       ID
