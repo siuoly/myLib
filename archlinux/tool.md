@@ -183,4 +183,49 @@ sdcv "good"
 mkdir -p $HOME/.stardict/dic/  # 字典路徑位置
 ```
 
+# dotfiles
+## chezmoi
+```sh
+## first use
+sh -c "$(curl -fsLS get.chezmoi.io/lb)" # not autocompletitioin
+pacman -S chezmoi # package manager, have autocompletitioin
+# install and apply
+sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply $GITHUB_USERNAME 
+
+## daily command
+chezmoi add <file>
+chezmoi edit <file>
+chezmoi diff
+chezmoi -v apply
+chezmoi -nv apply
+chezmoi  update # pull&&apply
+
+# git commit
+chezmoi cd
+chezmoi add .
+chezmoi commit -m "Initial commit"
+
+## github create new repo name XXX/dotfiles
+git remote add origin <repo_url>
+git branch -M main
+git push -u origin main
+
+# for second machine
+chezmoi init git@github.com:$GITHUB_USERNAME/dotfiles.git # private
+chezmoi init https://github.com/$GITHUB_USERNAME/dotfiles.git  # public
+chezmoi update -v  # pull and apply change
+# one line init and apply,
+chezmoi init --apply https://github.com/$GITHUB_USERNAME/dotfiles.git
+chezmoi init --apply git@github.com:$GITHUB_USERNAME/dotfiles.git # private
+
+# advanced usage
+chezmoi add .nanorc # 添加文件
+chezmoi add -x .config/fish/functions/ # 添加文件夹
+chezmoi add -xa .config/fish/functions # 递归添加文件夹和子目录下的全部内容
+chezmoi add -T .xprofile # 添加临时内容
+chezmoi add .tmux.conf --follow # 添加软链接对应的原始内容，而不是软链接符号
+chezmoi managed # 列出所管理的内容路径
+chezmoi archive --output=dotfiles.tar # 一次打包成压缩包放 U 盘上硬件备份
+```
+
 : vim: nospell:

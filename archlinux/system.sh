@@ -83,7 +83,7 @@ total: total physical memory space,記憶體總空間,購買記憶體商品上�
 used: actually used memory by each process, 程序使用中記憶體
 free: actually unused,free memory, 完全未被使用的記憶體。
 shared: used by more than one processes process, 被多個程序所共用的記憶體
-buffers: buffer space is where blocks of disk I/O operation having beed read or peding a write are stored. 加快磁碟讀寫，將disk資料事先儲存於此以節省實際讀取時間，將要寫入資料暫時寫於此以緩解寫入時間。
+buffers: buffer space is where blocks of disk I/O operation having been read or pending a write are stored. 加快磁碟讀寫，將disk資料事先儲存於此以節省實際讀取時間，將要寫入資料暫時寫於此以緩解寫入時間。
 cache: memory which stored frequency used data for save time to access main memory(locality), 將頻繁存取的資料暫存於此，可節省存取記憶時間，因爲空間連續性，cache資料放在離CPU較接近位址。ps. cache:提升記憶體效率, buffer:提升磁碟效率
 available: memory which be available for new process, 可用於新程序的記憶空間
 
