@@ -163,7 +163,7 @@ pacman -S gotty  # old version
 pacman -S gotty-client # 在terminal 開啓別人分享的terminal
 ```
 
-## dictionary
+# dictionary
 ```sh
 pacman -S translate-shell # google online 多國翻譯
 trans "good" # goodl dictionary
@@ -181,6 +181,11 @@ tar jxvf xxxx.tar.bz2 -C $HOME/.stardict/dic/ # 解壓縮字典到指定目錄
 sdcv -l # list available dict
 sdcv "good" 
 mkdir -p $HOME/.stardict/dic/  # 字典路徑位置
+touch $HOME/.sdcv_history # 搜尋記錄檔
+```
+## goldendict
+```sh
+yay -S goldendict-ng-git
 ```
 
 # dotfiles
