@@ -71,4 +71,5 @@ ss |grep -i "tcp" # -i:ignore find line contain "tcp" or "TCP"
 ss -tuap |grep -o "fd=[0-9]\+" # find and show only the pattern
 pacman -Qqe |grep -v "$(pacman -Qqm)" # -v inverse match, filter package, 
 # enclose by "" make is interpret as string, otherwith it would be seen as many files
+find -maxdepth 1 -type f|grep -v "\." |xarg rm # remove all executable file on the folder
 
