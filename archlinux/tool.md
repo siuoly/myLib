@@ -233,4 +233,22 @@ chezmoi managed # 列出所管理的内容路径
 chezmoi archive --output=dotfiles.tar # 一次打包成压缩包放 U 盘上硬件备份
 ```
 
+# clock
+```sh
+yay -S tty-clock
+tty-clock -t -c -C6 # 12hour, center, color
+```
+edit ~/.zshrc ,keybinding CTRL-O to call clock:
+`bindkey -s "^o" "tty-clock -t -c -C6" `
+
+# xdotool
+send key to terminal by command to focus program pragramatially
+```sh
+xdotool key alt+t
+xdotool key ctrl+shift+Page_Up
+xdotool key shift+Home
+xdotool key ctrl+l BackSpace
+```
+
+
 : vim: nospell:
