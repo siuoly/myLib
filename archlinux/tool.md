@@ -192,13 +192,15 @@ yay -S goldendict-ng-git
 ## chezmoi
 ```sh
 ## first use
-sh -c "$(curl -fsLS get.chezmoi.io/lb)" # not autocompletitioin
+sh -c "$(curl -fsLS get.chezmoi.io)" # not autocompletitioin
 pacman -S chezmoi # package manager, have autocompletitioin
 # install and apply
-sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- init --apply $GITHUB_USERNAME 
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME  # public
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:$GITHUB_USERNAME/dotfiles.git # private
 
 ## daily command
 chezmoi add <file>
+chezmoi re-add # add all files which been record
 chezmoi edit <file>
 chezmoi diff
 chezmoi -v apply
@@ -216,8 +218,8 @@ git branch -M main
 git push -u origin main
 
 # for second machine
-chezmoi init git@github.com:$GITHUB_USERNAME/dotfiles.git # private
 chezmoi init https://github.com/$GITHUB_USERNAME/dotfiles.git  # public
+chezmoi init git@github.com:$GITHUB_USERNAME/dotfiles.git # private
 chezmoi update -v  # pull and apply change
 # one line init and apply,
 chezmoi init --apply https://github.com/$GITHUB_USERNAME/dotfiles.git
@@ -250,5 +252,8 @@ xdotool key shift+Home
 xdotool key ctrl+l BackSpace
 ```
 
+# zoxide
+pacman -S zoxide
+apt install zoxide
 
 : vim: nospell:
