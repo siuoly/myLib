@@ -60,7 +60,7 @@ echo "127.0.1.1 HostName-eg-ArchLinux" >> /etc/hosts
 pacman -S networkmanager strongswan network-manager-applet
 pacman -S bluez  bluez-utils pulseaudio pulseaudio-bluetooth alsa-utils intel-ucode 
 pacman -S xorg xorg-server xinit xterm fuse unzip upower python tlp 
-pacman -S xclip ripgrep zoxide htop pacman-contrib brightnessctl
+pacman -S xclip ripgrep fd zoxide htop pacman-contrib brightnessctl
 pacman -S fuse unzip upower tlp python 
 pacman -S sudo zsh git openssh fakeroot base-devel wget # 開發工具
 pacman -S grub efibootmgr
@@ -121,7 +121,13 @@ mv nvim.appimage ~/.local/bin/nvim
 cd ~/.local/bin/
 ln -s nvim nv
 pip install neovim
-
+# nvim ubuntu
+sudo apt-get install ninja-build gettext cmake unzip curl
+git clone https://github.com/neovim/neovim
+cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb
+# nvchad
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 
 ## oh-my-zsh oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
