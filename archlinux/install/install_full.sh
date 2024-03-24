@@ -59,8 +59,8 @@ echo "127.0.1.1 HostName-eg-ArchLinux" >> /etc/hosts
 # pacman firmware install, base tool
 pacman -S networkmanager strongswan network-manager-applet
 pacman -S bluez  bluez-utils pulseaudio pulseaudio-bluetooth alsa-utils intel-ucode 
-pacman -S xorg xorg-server xinit xterm fuse unzip upower python tlp 
-pacman -S xclip ripgrep fd zoxide htop pacman-contrib brightnessctl
+pacman -S xorg xorg-server xorg-xinit xterm fuse unzip upower python tlp 
+pacman -S xclip ripgrep fd zoxide htop xdg-utils pacman-contrib brightnessctl
 pacman -S fuse unzip upower tlp python 
 pacman -S sudo zsh git openssh fakeroot base-devel wget # 開發工具
 pacman -S grub efibootmgr
@@ -147,3 +147,50 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 ## copytranslator
+
+############# lvm #################################
+物理卷 (PV) MBR GPT分区 被内核映射的设备
+卷组 (VG) <LeftMouse>物理卷的一个组
+逻辑卷 (LV)  "虚拟/逻辑卷" 
+物理块 (PE) 一个卷组中最小的连续区域(默认为4 MiB)，
+lvmdiskscan 列出可被用作物理卷的设备
+pvcreate DEVICE 在列出的设备上创建物理卷： 
+# pvcreate /dev/sda2
+pvdisplay 你可以用以下命令查看已创建好的物理卷：
+vgcreate <volume_group> <physical_volume> 创建卷组（VG）
+# vgcreate VolGroup00 /dev/sda2
+vgextend <卷组名> <物理卷> 让该卷组扩大到其他所有的物理卷:
+# vgextend VolGroup00 /dev/sdb1
+# vgextend VolGroup00 /dev/sdc
+vgcreate VolGroup00 /dev/sda2 /dev/sdb1 /dev/sdc 一步创建卷组
+lvcreate -L <卷大小> <"卷组名"> -n <卷名>
+# lvcreate -L 10G VolGroup00 -n lvolhome
+# lvcreate -L 30G lvm -n root
+# lvcreate -L 8G lvm -n swap
+# lvcreate -l 100% lvm -n home
+
+mkfs.fat -F32 /dev/sda1 # Format the boot partition first
+mkfs.ext4 /dev/lvm/root # Format the other partitions
+mkfs.ext4 /dev/lvm/home
+该逻辑卷创建完后，你就可以通过/dev/mapper/Volgroup00-lvolhome或/dev/VolGroup00/lvolhome来访问它。与卷组命名类似，你可以按你的需要将逻辑卷命名。
+
+# edit /etc/mkinitcpio.conf,  add "lvm2" between block and filesystems
+HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block lvm2 filesystems fsck)
+mkinitcpio -P
+#################################################################################################3
+# create swap 
+## from https://linuxize.com/post/create-a-linux-swap-file/
+sudo fallocate -l 8G /swapfile # or following ,optional
+# sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576 # 1024*1024=1048576(1G)
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+      # edit /etc/fstab
+      /swapfile swap swap defaults 0 0 # add new line
+sudo swapon --show # test success
+sudo free -h
+# remove swap
+sudo swapoff -v /swapfile
+      # edit /etc/fstab
+      /swapfile swap swap defaults 0 0 # remove line
+sudo rm /swapfile

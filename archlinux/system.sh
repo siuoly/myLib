@@ -48,15 +48,15 @@ sudo fallocate -l 8G /swapfile # or following ,optional
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
-      # edit /etc/fstab
-      /swapfile swap swap defaults 0 0 # add new line
+# edit /etc/fstab , add following line
+# /swapfile swap swap defaults 0 0
 sudo swapon --show # test success
 sudo free -h
 
 # remove swap
 sudo swapoff -v /swapfile
-      # edit /etc/fstab
-      /swapfile swap swap defaults 0 0 # remove line
+# edit /etc/fstab
+# /swapfile swap swap defaults 0 0 # remove line
 sudo rm /swapfile
 
 #################################################################################################3
@@ -89,4 +89,30 @@ available: memory which be available for new process, 可用於新程序的記�
 
 formula: used = total- available (每個版本free公式不一樣,e.g. used=total-(free+buffer+cache), man free查看)
          available = free + buff + cache - ... (並非所有cache 可用於新程序,可能被某些專案佔用,故available實際會少一些)
+
+############# lvm #################################
+物理卷 (PV) MBR GPT分区 被内核映射的设备
+卷组 (VG) <LeftMouse>物理卷的一个组
+逻辑卷 (LV)  "虚拟/逻辑卷" 
+物理块 (PE) 一个卷组中最小的连续区域(默认为4 MiB)，
+lvmdiskscan 列出可被用作物理卷的设备
+pvcreate DEVICE 在列出的设备上创建物理卷： 
+# pvcreate /dev/sda2
+pvdisplay 你可以用以下命令查看已创建好的物理卷：
+vgcreate <volume_group> <physical_volume> 创建卷组（VG）
+# vgcreate VolGroup00 /dev/sda2
+vgextend <卷组名> <物理卷> 让该卷组扩大到其他所有的物理卷:
+# vgextend VolGroup00 /dev/sdb1
+# vgextend VolGroup00 /dev/sdc
+vgcreate VolGroup00 /dev/sda2 /dev/sdb1 /dev/sdc 一步创建卷组
+lvcreate -L <卷大小> <"卷组名"> -n <卷名>
+# lvcreate -L 10G VolGroup00 -n lvolhome
+# lvcreate -L 30G lvm -n root
+# lvcreate -L 8G lvm -n swap
+# lvcreate -l 100% lvm -n home
+
+mkfs.fat -F32 /dev/sda1 # Format the boot partition first
+mkfs.ext4 /dev/lvm/root # Format the other partitions
+mkfs.ext4 /dev/lvm/home
+该逻辑卷创建完后，你就可以通过/dev/mapper/Volgroup00-lvolhome或/dev/VolGroup00/lvolhome来访问它。与卷组命名类似，你可以按你的需要将逻辑卷命名。
 
