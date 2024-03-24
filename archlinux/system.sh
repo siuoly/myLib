@@ -31,7 +31,7 @@ sudo tic -xs <xxx.info> # make terminfo file to /usr/share/terminfo
 # usb using
 lsblk # check usb usage
 mkdir /mnt/usb
-sudo mount /dev/<device> /mnt/usb # e.g. mount /dev/seb /mnt/usb
+sudo mount /dev/<device> /mnt/usb -o umask=000 # e.g. mount /dev/sdb1 /mnt/usb, all user is writable
 chown $USER /mnt/usb # for presonal usage
 umount /mnt/usb # remove usb
 
