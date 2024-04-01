@@ -1,7 +1,7 @@
 ## yay , login in user
 pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
 # yay tool use packager
-yay -S ly xsct xst keyd ttf-comic-mono-git rofi-bluetooth-git copytranslator-bin
+yay -S flameshot ly xsct xst keyd ttf-comic-mono-git rofi-bluetooth-git copytranslator-bin
 # pacman -S otf-comicshanns-nerd ttf-lxgw-wenkai ttf-maple
 sudo systemctl enable ly.service --now
 

@@ -13,7 +13,7 @@ docker container run -it node:20 /bin/bash
 
 # 查看目前正在運行中的 container
 docker container ls
-
+docker ps
 # 查看全部的 container，包括已經停止的。 (a -> all)
 docker container ls -a
 
@@ -50,3 +50,4 @@ docker container prune -f
 # 移除 node:18 這個 image
 # 移除 image 前要先移除用這個 image 啟動的 containers
 docker image rm node:18
+docker rmi node:18
