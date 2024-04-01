@@ -28,3 +28,33 @@ kill_sleep(){ [ $sleep_pid -ne 0 ] && kill $sleep_pid >/dev/null 2>&1 }
 trap "kill_sleep" USR1 # when receive signal USR1 , by kill -s USR1, # call function kill_sleep
 sleep 1000& PID=$! # make sleep program background, and record PID
 wait # wait sleep process # when receive USR signal, kill sleep immediately
+
+# expand previous last argument https://stackoverflow.com/a/36654936
+ls /etc/pacman.d/mirrorlist # first command
+cat !$ # type "tab" to exapnd previous argument
+cat $_ # the same
+
+# keyboard:
+<esc> + .
+<alt> + . # it cycles through the last arg of your previous cmd
+
+# expand previous all arugments 
+echo 1 2 3 4
+cat !^ # first
+cat !$ # last arg
+cat !* # all
+cat !:1 # fitst arg, e.g. !:2, !:3
+cat !:2-3 # 2nd ~ 3rd arg
+!<pattern> # most recent cmd matching <pattern>
+!!:s/<cmd1>/<cmd2> # last cmd, substitude cmd1 with cmd2
+!!:s!<cmd1>!<cmd2> # the same
+
+# use history cmd
+!1 # fitst cmd
+!-1 # last cmd
+!3:2 # take the 2nd arg from the 3rd cmd in the history,
+
+# hotkey
+<ctrl> + x + e # edit command on editor
+<ctrl> + b # vi mode, using vi-keybinding
+
