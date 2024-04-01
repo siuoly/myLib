@@ -1,3 +1,21 @@
+# delete user
+sudo userdel <user>
+
+# suspend need password
+# ==== AUTHENTICATING FOR org.freedesktop.login1.halt ====
+sudo -e /usr/share/polkit-1/actions/org.freedesktop.login1.policy # edit polkit rule files
+'
+search login1.suspend
+edit 
+  <action id="org.freedesktop.login1.suspend">
+      <allow_inactive>auth_admin_keep</allow_inactive>
+      <allow_active>yes</allow_active>
+to
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+'
+
+
 # linux system command
 # show system information
 neofetch 
