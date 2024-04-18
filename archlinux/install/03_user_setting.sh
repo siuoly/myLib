@@ -70,3 +70,7 @@ sudo keyd reload
 ## other setting
 brightnessctl s 852
 xsct 3000 0.8
+
+# nvim other:
+pacman -S sdcv translate-shell # 星際譯王, google online 多國翻譯
+

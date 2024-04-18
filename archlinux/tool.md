@@ -177,6 +177,7 @@ pacman -S sdcv  # offline 星際譯王 starDict
 # 下載字典
 # 1. https://blog.yuaner.tw/old/%E7%9B%AE%E5%89%8D%E6%AE%98%E7%95%99%E7%9A%84%E6%98%9F%E9%9A%9B%E8%AD%AF%E7%8E%8B%E5%AD%97%E5%85%B8%E6%AA%94/
 # 2. https://kdr2.com/resource/stardict.html
+bunzip2 ***.tar.bz2
 tar jxvf xxxx.tar.bz2 -C $HOME/.stardict/dic/ # 解壓縮字典到指定目錄
 sdcv -l # list available dict
 sdcv "good" 
