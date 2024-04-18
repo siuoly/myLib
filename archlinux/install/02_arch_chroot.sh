@@ -24,7 +24,7 @@ passwd siuoly #<user>
 echo "siuoly ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 # pacman firmware install, base tool
-pacman -S strongswan network-manager-applet\
+pacman -S strongswan networkmanager-l2tp network-manager-applet\
  bluez  bluez-utils pulseaudio pulseaudio-bluetooth alsa-utils intel-ucode \
  xorg xorg-server xorg-xinit xterm xdg-utils fuse unzip upower python tlp \
  xclip ripgrep fd zoxide htop pacman-contrib brightnessctl\

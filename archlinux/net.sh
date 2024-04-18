@@ -37,6 +37,16 @@ password-flags=0 => Save password in plain text
 password-flags=1 => Save encrypted password
 password-flags=2 => Don't save password, ask when needed when using this, nmcli c up CON_NAME --ask is needed 
 "
+####### everytime connect need not input password
+# connection file: /etc/NetworkManager/system-connections/<connection>.nmconnection # need root
+"
+[vpn]
+password-flags=0 # no encrypting
+[vpn-secrets]
+password=<USER-PASSWORD>
+ipsec-psk=<PRE_SHARED_KEY>
+"
+
 ##############################################################################################################
 # cat /proc/net/dev # show network throughput, Packets number
 ##############################################################################################################
