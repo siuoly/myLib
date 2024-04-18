@@ -126,8 +126,13 @@ vgcreate VolGroup00 /dev/sda2 /dev/sdb1 /dev/sdc 一步创建卷组
 lvcreate -L <卷大小> <"卷组名"> -n <卷名>
 # lvcreate -L 10G VolGroup00 -n lvolhome
 # lvcreate -L 30G lvm -n root
-# lvcreate -L 8G lvm -n swap
+# lvcreate -L 8G lvm --name swap
 # lvcreate -l 100% lvm -n home
+lvreduce -L <卷大小> <"卷名稱">
+# lvreduce -L -50G /dev/lvm00/home # 縮小home卷 50G 大小
+# lvreduce -L -50G /dev/lvm00/home --resizefs # 處理檔案系統問題，需要卸載該磁區，建議從root執行
+lvrename <VG> <LV> <LV_new>
+# lvrename lvm00 home home_new
 
 mkfs.fat -F32 /dev/sda1 # Format the boot partition first
 mkfs.ext4 /dev/lvm/root # Format the other partitions
