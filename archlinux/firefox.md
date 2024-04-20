@@ -14,3 +14,7 @@ For Firefox:
 # change tab size
 You can go to `about:config` and switch `browser.compactmode.show` to true (double click on it and it will switch from false to true). Then right-click in empty space on the tab bar, select *Customize toolbar*, then click on Density at the bottom-left and select Compact.
 Edit: Just realized that *browser.compactmode.show* essentially changes *browser.uidensity* to 1.
+
+# block reddit embbed message
+[link](https://www.reddit.com/r/help/comments/14i71i3/how_to_make_the_embed_thing_stop/)
+paste `www.reddit.com##embed-snippet-share-button` on adblock-ultimate custom rules
