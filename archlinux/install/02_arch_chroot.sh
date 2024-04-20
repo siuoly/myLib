@@ -24,18 +24,18 @@ passwd siuoly #<user>
 echo "siuoly ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 # pacman firmware install, base tool
-pacman -S strongswan networkmanager-l2tp network-manager-applet\
- bluez  bluez-utils pulseaudio pulseaudio-bluetooth alsa-utils intel-ucode \
+pacman -S --noconfirm strongswan networkmanager-l2tp network-manager-applet\
+ bluez  blueman pulseaudio pulseaudio-bluetooth alsa-utils intel-ucode \
  xorg xorg-server xorg-xinit xterm xdg-utils fuse unzip upower python tlp \
  xclip ripgrep fd zoxide htop pacman-contrib brightnessctl\
  fuse unzip upower tlp python lvm2\
  sudo zsh git openssh fakeroot base-devel wget\
  grub efibootmgr\
  maim feh ranger
-# nvtop # optional 
+# nvtop bluez-utils # optional 
 
 # i3wm
-pacman -S i3-wm polybar
+pacman -S --noconfirm i3-wm polybar
 # in ~/.xinitrc: add exec i3
 
 # grub
@@ -46,6 +46,7 @@ ls /boot
 
 systemctl enable NetworkManager
 systemctl enable sshd.service
+systemctl enable bluetooth.service
 # exit arch
 # umount /mnt/boot && umount /mnt
 # reboot

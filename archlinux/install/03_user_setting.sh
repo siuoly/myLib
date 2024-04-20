@@ -1,20 +1,20 @@
 ## yay , login in user
-pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+pacman -S --noconfirm --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
 # yay tool use packager
-yay -S flameshot ly xsct xst keyd ttf-comic-mono-git rofi-bluetooth-git copytranslator-bin
-# pacman -S otf-comicshanns-nerd ttf-lxgw-wenkai ttf-maple
+yay -S flameshot ly xsct xst keyd ttf-comic-mono-git copytranslator-bin
+# pacman --noconfirm -S otf-comicshanns-nerd ttf-lxgw-wenkai ttf-maple
 sudo systemctl enable ly.service --now
 
 ## oh-my-zsh oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ## install font, browser, vscode
-sudo pacman -S noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd terminus-font # otf-droid-nerd # font 
+sudo pacman -S --noconfirm noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd terminus-font # otf-droid-nerd # font 
 wget -P $HOME https://github.com/subframe7536/maple-font/releases/download/v7.0-beta11/MapleMono-nf-cn.zip
 sudo unzip $HOME/MapleMono-nf-cn.zip -d /usr/share/fonts/MapleMono
-sudo pacman -S firefox # browser
-sudo pacman -S alacritty exa npm github-cli lazygit chezmoi # tool
-sudo pacman -S fcitx5-im fcitx5-rime # fcitx5-chewing  IME input method
+sudo pacman -S --noconfirm firefox # browser
+sudo pacman -S --noconfirm rofi alacritty exa npm github-cli lazygit chezmoi # tool
+sudo pacman -S --noconfirm fcitx5-im fcitx5-rime # fcitx5-chewing  IME input method
 # pacman -S visual-studio-code-bin libreoffice-still-zh-tw pavucontrol # sound testing
 
 ## fzf
@@ -47,13 +47,13 @@ chezmoi init git@github.com:siuoly/dotfiles.git --apply
 
 ## nvim build
 git clone https://github.com/neovim/neovim
-sudo pacman -S base-devel cmake unzip ninja curl # archlinux
+sudo pacman -S --noconfirm base-devel cmake unzip ninja curl # archlinux
 #sudo apt-get install ninja-build gettext cmake unzip curl # ubuntu
 cd neovim && git checkout stable && make CMAKE_BUILD_TYPE=RelWithDebInfo
 ## nvim install
 sudo make install # archlinux install
 # cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb # ubuntu install
-sudo pacman -S python-neovim # archlinux need for nvim
+sudo pacman -S --noconfirm python-neovim # archlinux need for nvim
 #pip install neovim # ubuntu need for nvim
 
 # nvchad
@@ -72,5 +72,5 @@ brightnessctl s 852
 xsct 3000 0.8
 
 # nvim other:
-pacman -S sdcv translate-shell # 星際譯王, google online 多國翻譯
+pacman -S --noconfirm sdcv translate-shell # 星際譯王, google online 多國翻譯
 
