@@ -82,8 +82,13 @@ sudo rm /swapfile
 ## https://askubuntu.com/a/1385877/1743532
 lsusb # find {vender}:{product}
 sudo nv /etc/udev/rules.d/90-usb-wakeup.rules
+
 # add:  ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c52b", ATTR{power/wakeup}="disabled"
-# modify vender,product string
+# modify vender(046d), product(c52b) string
+
+# add2:
+# ACTION=="add", SUBSYSTEM=="pci|usb", ATTR{power/wakeup}=="enabled", ATTR{power/wakeup}="disabled" 
+# disable all usb device to wakeup system
 sudo udevadm control --reload-rules
 # Disconnect and reconnect the USB device.
 
@@ -92,6 +97,7 @@ sudo udevadm control --reload-rules
 # reference:
   # diff between buffer & cache: https://www.baeldung.com/linux/free-buffer-cache-report
   # Compute formula: https://serverfault.com/questions/377617/how-to-interpret-output-from-linux-top-command
+
 free -h -w
                total        used        free      shared     buffers       cache   available
 Mem:           7.6Gi       4.1Gi       695Mi       550Mi       466Mi       3.2Gi       3.5Gi
