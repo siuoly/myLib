@@ -1,6 +1,15 @@
-def chuncks(iterable, n): # batch, chunck itertools 
-    for i in range(0,len(iterable),n):
-        yield iterable[i:i+n]
+# sys.path.append("xxx") # 添加新路徑，讓pyright找到的方法
+"""
+env variable append following:
+PATHONPATH+="/aa/bb/cc/your_path/:"
+"""
+
+
+def chuncks(iterable, n):  # batch, chunck itertools
+    for i in range(0, len(iterable), n):
+        yield iterable[i : i + n]
+
+
 """
 a = list(range(100))
 for c in chuncks(a,13):
@@ -21,13 +30,16 @@ python3 -m pretty_errors # install it for all environment
     )
 """
 from time import perf_counter
-class Timer():
-    def __init__(self,m="",file=None) -> None:
-        self.m= m
-        self.file=file
+
+
+class Timer:
+    def __init__(self, m="", file=None) -> None:
+        self.m = m
+        self.file = file
+
     def __enter__(self):
         self.s = perf_counter()
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        end= perf_counter()
-        print( f"{self.m} {end-self.s} sec",file=self.file)
 
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        end = perf_counter()
+        print(f"{self.m} {end-self.s} sec", file=self.file)
