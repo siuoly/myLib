@@ -80,3 +80,17 @@ sudo lsof -nPi
 
 sudo ss -nutp # mean --numeric --udp --tcp --process 
 sudo ss -nutap # -a: --all type connectoin(e.g. LISTEN,UNCONN) 
+###############################################################################################################
+# peap setting
+# https://askubuntu.com/questions/262491/connect-to-a-wpa2-enterprise-connection-via-cli-no-desktop
+nmcli con add type wifi ifname wlan0 con-name <CONNECTION_NAME> ssid <SSID> # SSID: e.g. NTUST-PEAP
+nmcli con edit id <CONNECTION_NAME>
+nmcli> set ipv4.method auto
+nmcli> set 802-1x.eap peap
+nmcli> set 802-1x.phase2-auth mschapv2
+nmcli> set wifi-sec.key-mgmt wpa-eap
+nmcli> set 802-1x.identity USERNAME
+nmcli> set 802-1x.password PASSWORD
+nmcli> save
+nmcli> activate
+# nmcli> set 802-1x.anonymous-identity ANONYMOUS-IDENTITY
