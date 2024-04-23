@@ -1,10 +1,11 @@
-# sys.path.append("xxx") # 添加新路徑，讓pyright找到的方法
+# sys.path.append("xxx") # 添加新路徑，且pyright找到的方法
 """
 env variable append following:
 PATHONPATH+="/aa/bb/cc/your_path/:"
 """
 
 
+###########################################################
 def chuncks(iterable, n):  # batch, chunck itertools
     for i in range(0, len(iterable), n):
         yield iterable[i : i + n]
