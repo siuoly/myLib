@@ -257,4 +257,12 @@ xdotool key ctrl+l BackSpace
 pacman -S zoxide
 apt install zoxide
 
+# ifuse
+iphone mount on linux system
+```sh
+pacman -S ifuse
+ifuse <directory>
+fusermount -u <directory> # umount
+```
+
 : vim: nospell:
