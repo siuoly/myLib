@@ -264,5 +264,11 @@ pacman -S ifuse
 ifuse <directory>
 fusermount -u <directory> # umount
 ```
+# nvtop
+```sh
+wget https://github.com/Syllo/nvtop/releases/download/3.1.0/nvtop-x86_64.AppImage -O ~/.local/bin/nvtop
+chmod +x ~/.local/bin/nvtop
+nvtop
+```
 
 : vim: nospell:
