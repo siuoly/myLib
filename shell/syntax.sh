@@ -6,8 +6,18 @@ x=1; y=2
  [[ $x -gt $y ]] || [ $x -gt $y ]
  [[ $x -lt $y ]] || [ $x -lt $y ]
 
-# detect if exist variable # if True, the varaible not exist 
+[ -z "" ] && ehco "string length is zero"
+[ -n "1" ] && ehco "string length is non-zero"
+[ "aaa" = "aaa" ] && echo "string is equal"
+# e.g. detect if exist variable # if True, the varaible not exist 
 [ -z $TMUX ] && echo "not exist \$TMUX" || echo "exist \$TMUX"
+[ "$SHELL" = "/usr/bin/zsh" ] && echo "zsh" || echo "other"
+
+# pattern match [[ ]],  not [ ]
+[[ "abc-x" = "abc"* ]] && echo true
+[[ "a-xx-a" = *"xx"* ]] && echo true
+[[ "xterm" =~ ."xterm" ]] && echo false
+[[ "xterm" =~ .*"xterm" ]] && echo true
 
 # redirect stdout, stderr
 ls >file # equal to: ls 1>file
