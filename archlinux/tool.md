@@ -18,6 +18,10 @@ pacman -Sy # update database, -Syy force even if it is latest
 
 pacman -Qqtd # find package installed as dependency but now not be dependent(orphan)
 ```
+# ubuntu tools
+apt list --installed
+dpkg -l
+
 # Fonts, fonts
 path1: ~/.local/share/fonts/ , user manually installed, system-wise
 path2: /usr/share/fonts ,  package mamager installed
@@ -270,5 +274,8 @@ wget https://github.com/Syllo/nvtop/releases/download/3.1.0/nvtop-x86_64.AppImag
 chmod +x ~/.local/bin/nvtop
 nvtop
 ```
+# unrar: unzip rar file
+`pacman -S unrar`
+`unrar <file>`
 
 : vim: nospell:

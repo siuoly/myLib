@@ -7,3 +7,6 @@ exec "$SHELL"
 pyenv install 3.10.4
 pyenv virtualenv 3.10.4 default
 pyenv global default
+
+# import _tkinter # If this fails your Python may not be configured for Tk
+pacman -S tk
