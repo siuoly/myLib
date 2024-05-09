@@ -1,6 +1,7 @@
+vim: nospell:
 # pacman usage
 ```sh
-# search
+"search"
 pacman -Ss "keyword.."  # find package from online by any length of keyword
 pacman -Qs "keyword.." # find package from local installed packages
 pacman -Qm # list AUR package (not found in sync db)
@@ -17,6 +18,11 @@ pacman -Qo "executable_cmd/file"  # find package by execuble or file
 pacman -Sy # update database, -Syy force even if it is latest
 
 pacman -Qqtd # find package installed as dependency but now not be dependent(orphan)
+```
+# yay
+```sh
+yay -Ps # list system package statistic info
+pacman -Rns yay # remove uninstall yay
 ```
 # ubuntu tools
 apt list --installed
@@ -277,5 +283,37 @@ nvtop
 # unrar: unzip rar file
 `pacman -S unrar`
 `unrar <file>`
+# conda
+wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
+conda --version # -V
+conda update conda # or anaconda , python
+conda update # for all packages
+conda upgrade --all # also update dependency
 
-: vim: nospell:
+conda list
+conda list -n "env_name" # show other env pkgs
+
+conda install <pkg>
+conda install <pkg>==<version>
+conda install -n "env_name" <pkg>
+conda install --yes --file requirement.txt
+conda uninstall <pkg>
+conda remove -n "env_name" "pkg_name"
+
+conda env list
+conda info -e
+conda create -n "env_name" # -n: --name
+conda create -n "env_name" python=X.X # e.g. 3.9, 3.7
+conda env create -f "envfile.yml"
+conda env create # using environment.yml the current folder
+conda env remove -n "env_name"
+
+conda activate "env_name"
+source activate "env_name"
+conda deactivate
+source deactivate "env_name"
+
+conda config --set auto_activate_base false # no shell prompt
+conda init --reverse $SHELL # undo
+
+conda install pytorch==2.0.1 pytorch-cuda=11.8 -c pytorch -c nvidia
