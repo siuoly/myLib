@@ -108,8 +108,8 @@ pacman -S visual-studio-code-bin libreoffice-still-zh-tw pavucontrol # sound tes
 ## yay
 pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
 # yay tool use packager
-yay -S ly xsct xst keyd ttf-comic-mono-git rofi-bluetooth-git copytranslator-bin
-pacman -S otf-comicshanns-nerd ttf-lxgw-wenkai ttf-maple
+yay -S ly xsct xst keyd ttf-comic-mono-git rofi-bluetooth-git copytranslator-bin ttf-lxgw-wenkai
+pacman -S otf-comicshanns-nerd
 
 ## tailscale
 curl -fsSL https://tailscale.com/install.sh | sh

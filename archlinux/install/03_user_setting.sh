@@ -1,8 +1,9 @@
 ## yay , login in user
 pacman -S --noconfirm --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
-# yay tool use packager
+# yay tool use package
 yay -S flameshot ly xsct xst keyd ttf-comic-mono-git copytranslator-bin
-# pacman --noconfirm -S otf-comicshanns-nerd ttf-lxgw-wenkai ttf-maple
+# yay -S ttf-lxgw-wenkai ttf-maple
+# pacman --noconfirm -S otf-comicshanns-nerd
 sudo systemctl enable ly.service --now
 
 ## oh-my-zsh oh my zsh
@@ -10,8 +11,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## install font, browser, vscode
 sudo pacman -S --noconfirm noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd terminus-font # otf-droid-nerd # font 
-wget -P $HOME https://github.com/subframe7536/maple-font/releases/download/v7.0-beta11/MapleMono-nf-cn.zip
-sudo unzip $HOME/MapleMono-nf-cn.zip -d /usr/share/fonts/MapleMono
+wget -P $HOME https://github.com/subframe7536/maple-font/releases/download/v7.0-beta16/MapleMono-NF-CN.zip
+sudo unzip $HOME/MapleMono-NF-CN.zip -d /usr/share/fonts/MapleMono
+# fixme)) todo)) [TRACE] [WARN] [ERROR] [FATAL] [FATAL] 
+# maple font usage [ https://github.com/subframe7536/maple-font/releases?page=1 ]
 sudo pacman -S --noconfirm firefox # browser
 sudo pacman -S --noconfirm rofi alacritty exa npm github-cli lazygit chezmoi # tool
 sudo pacman -S --noconfirm fcitx5-im fcitx5-rime # fcitx5-chewing  IME input method
