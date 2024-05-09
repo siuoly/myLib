@@ -65,6 +65,6 @@ cat !:2-3 # 2nd ~ 3rd arg
 !3:2 # take the 2nd arg from the 3rd cmd in the history,
 
 # hotkey
-<ctrl> + x + e # edit command on editor
+<ctrl> + x + e # edit current command on editor
 <ctrl> + b # vi mode, using vi-keybinding
-
+fc # edit last comand
