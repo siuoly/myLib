@@ -1,5 +1,6 @@
 vim: nospell:
-# pacman usage
+## package mamager
+### pacman usage
 ```sh
 "search"
 pacman -Ss "keyword.."  # find package from online by any length of keyword
@@ -19,7 +20,7 @@ pacman -Sy # update database, -Syy force even if it is latest
 
 pacman -Qqtd # find package installed as dependency but now not be dependent(orphan)
 ```
-# yay
+### yay
 ```sh
 yay -Ps # list system package statistic info
 pacman -Rns yay # remove uninstall yay
@@ -60,31 +61,26 @@ brightness s 50%   # or +50%
 redshift -PO 3500K
 xsct <temperature> <brightness> # xsct 3000 0.8
 ```
-
-# keybaord repeat speed
-```sh
-xset r rate 200 50 # 1:<time to starte repeat(ms)>  2:<repeat speed>
-```
-# mouse move speed set
-```sh
-xinput --list # check id=<id>
-xinput --list-props <id> # check attribute(<attr>): number
-xinput --set-prop <id> <attr> <value>
-```
-# screen saver control 關閉螢幕保護程式 
-```sh
-xset s off
-```
-
-# prevent external monitor turn off
-```sh
-xset dpms 600 0 0 # standby:600 sec, suspend:disable, off:disable
-```
-
 # i3 disable screen saver
 `exec --no-startup-id xset dpms 600 0 0 s off`
 
-# file explorer: ranger preview image
+# ranger 
+https://gist.github.com/heroheman/aba73e47443340c35526755ef79647eb
+- gL:jump dir of link file
+
+- cw: rename a:file A:extension
+
+- c-n: new tabs
+- c-w:*del tab*
+- tab:"move tab"
+- shift-tab:"move tab"
+
+- *space*: toggle mark
+- yt: copy marked file
+- dt: cut marked file
+- pp: paste file
+`. ranger` or `source ranger`: when exit ranger, move to last directory
+## file explorer: ranger preview image
 ```conf
 /home/siuoly/.config/ranger/rc.conf
 set preview_images true
@@ -109,24 +105,6 @@ echo "028cfaaf551d64cbb2f39d15363ed78edb01e2673579b48cb694e3604207d656 nvim.appi
 sha256sum <file> # manually comparing
 ```
 
-# Thinkpad trackpoint speed small redpoint speed
-```sh
-# 1. find config file path
-find /sys/devices/platform/i8042 -name name | xargs grep -Fl TrackPoint | sed 's/\/input\/input[0-9]*\/name$//'
-# 2. output target info
-cat /sys/devices/platform/i8042/serio1/serio2/{sensitivity,speed}
-# 3. sudo write indicated number to configure file
-echo 255 |sudo tee /sys/devices/platform/i8042/serio1/serio2/sensitivity  # origin:200
-echo 255 |sudo tee /sys/devices/platform/i8042/serio1/serio2/speed   # origin:97
-
-# 4. add udev rule, append following declaration
-nvim /etc/udev/rules.d/trackpoint.rules
-SUBSYSTEM=="serio", DRIVERS=="psmouse", DEVPATH=="/sys/devices/platform/i8042/serio1/serio2", ATTR{sensitivity}="220", ATTR{speed}="110"
-# 5. reboot or run following command enble setting
-sudo udevadm control --reload-rules
-sudo udevadm trigger
-```
-
 # man
 ```sh
 man -k <search> # search target page
@@ -139,13 +117,16 @@ man n page # alias above
 pacman -S mpv
 
 # sound tune
+```sh
 pacman -S alsa-utils
 alsamixer # terminal gui tune sound 
 pacman -S pavucontrol
 pavucontrol # better than alsamixer
+```
 
 # tailscale
-pkill -9 NetworkManager # solve /etc/resolv.conf dns problem
+
+`pkill -9 NetworkManager` # solve /etc/resolv.conf dns problem
 
 # xst config
 yay -S xst
@@ -153,18 +134,16 @@ yay -S xst
 make && sudo make install
 
 # disk partition
-    > expand efi system partition
-`yay -S gparted`
+expand efi system partition: `yay -S gparted`
 
-# browser as terminal
-## ttyd
+# ttyd
 share terminal on browser
 使用情境，在A電腦上，*臨時*分享其terminal，給B主機（手機,電腦,平板）的瀏覽器上使用。
 ```sh
 pacman -S ttyd
 ttyd zsh
 ip -brief addr # find my ip address
-# another PC, iphone browser-> url:IP:7681 ,then can run the brower
+ # another PC, iphone browser-> url:IP:7681 ,then can run the brower
 ```
 
 ## gotty
@@ -173,7 +152,7 @@ pacman -S gotty  # old version
 pacman -S gotty-client # 在terminal 開啓別人分享的terminal
 ```
 
-# dictionary
+## dictionary
 ```sh
 pacman -S translate-shell # google online 多國翻譯
 trans "good" # goodl dictionary
@@ -184,9 +163,12 @@ pacman -S wudao-dict-git # 有道字典命令行版, 剛好足夠
 wd "good"
 
 pacman -S sdcv  # offline 星際譯王 starDict
-# 下載字典
-# 1. https://blog.yuaner.tw/old/%E7%9B%AE%E5%89%8D%E6%AE%98%E7%95%99%E7%9A%84%E6%98%9F%E9%9A%9B%E8%AD%AF%E7%8E%8B%E5%AD%97%E5%85%B8%E6%AA%94/
-# 2. https://kdr2.com/resource/stardict.html
+```
+
+下載字典
+ 1. https://blog.yuaner.tw/old/%E7%9B%AE%E5%89%8D%E6%AE%98%E7%95%99%E7%9A%84%E6%98%9F%E9%9A%9B%E8%AD%AF%E7%8E%8B%E5%AD%97%E5%85%B8%E6%AA%94/
+ 2. https://kdr2.com/resource/stardict.html
+```sh
 bunzip2 ***.tar.bz2
 tar jxvf xxxx.tar.bz2 -C $HOME/.stardict/dic/ # 解壓縮字典到指定目錄
 sdcv -l # list available dict
@@ -198,18 +180,16 @@ touch $HOME/.sdcv_history # 搜尋記錄檔
 ```sh
 yay -S goldendict-ng-git
 ```
-
-# dotfiles
 ## chezmoi
 ```sh
-## first use
+ ## first use
 sh -c "$(curl -fsLS get.chezmoi.io)" # not autocompletitioin
 pacman -S chezmoi # package manager, have autocompletitioin
-# install and apply
+ # install and apply
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME  # public
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:$GITHUB_USERNAME/dotfiles.git # private
 
-## daily command
+ ## daily command
 chezmoi add <file>
 chezmoi re-add # add all files which been record
 chezmoi edit <file>
@@ -218,25 +198,25 @@ chezmoi -v apply
 chezmoi -nv apply
 chezmoi  update # pull&&apply
 
-# git commit
+ # git commit
 chezmoi cd
 chezmoi add .
 chezmoi commit -m "Initial commit"
 
-## github create new repo name XXX/dotfiles
+ ## github create new repo name XXX/dotfiles
 git remote add origin <repo_url>
 git branch -M main
 git push -u origin main
 
-# for second machine
+ # for second machine
 chezmoi init https://github.com/$GITHUB_USERNAME/dotfiles.git  # public
 chezmoi init git@github.com:$GITHUB_USERNAME/dotfiles.git # private
 chezmoi update -v  # pull and apply change
-# one line init and apply,
+ # one line init and apply,
 chezmoi init --apply https://github.com/$GITHUB_USERNAME/dotfiles.git
 chezmoi init --apply git@github.com:$GITHUB_USERNAME/dotfiles.git # private
 
-# advanced usage
+ # advanced usage
 chezmoi add .nanorc # 添加文件
 chezmoi add -x .config/fish/functions/ # 添加文件夹
 chezmoi add -xa .config/fish/functions # 递归添加文件夹和子目录下的全部内容
@@ -255,7 +235,7 @@ edit ~/.zshrc ,keybinding CTRL-O to call clock:
 `bindkey -s "^o" "tty-clock -t -c -C6" `
 
 # xdotool
-send key to terminal by command to focus program pragramatially
+send key to terminal by command to focus program pragramatially, used by script
 ```sh
 xdotool key alt+t
 xdotool key ctrl+shift+Page_Up
@@ -264,6 +244,7 @@ xdotool key ctrl+l BackSpace
 ```
 
 # zoxide
+qucik jump directory tool
 pacman -S zoxide
 apt install zoxide
 
@@ -275,6 +256,7 @@ ifuse <directory>
 fusermount -u <directory> # umount
 ```
 # nvtop
+nvidia graphic card usage monitor
 ```sh
 wget https://github.com/Syllo/nvtop/releases/download/3.1.0/nvtop-x86_64.AppImage -O ~/.local/bin/nvtop
 chmod +x ~/.local/bin/nvtop
@@ -283,37 +265,9 @@ nvtop
 # unrar: unzip rar file
 `pacman -S unrar`
 `unrar <file>`
-# conda
-wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
-conda --version # -V
-conda update conda # or anaconda , python
-conda update # for all packages
-conda upgrade --all # also update dependency
-
-conda list
-conda list -n "env_name" # show other env pkgs
-
-conda install <pkg>
-conda install <pkg>==<version>
-conda install -n "env_name" <pkg>
-conda install --yes --file requirement.txt
-conda uninstall <pkg>
-conda remove -n "env_name" "pkg_name"
-
-conda env list
-conda info -e
-conda create -n "env_name" # -n: --name
-conda create -n "env_name" python=X.X # e.g. 3.9, 3.7
-conda env create -f "envfile.yml"
-conda env create # using environment.yml the current folder
-conda env remove -n "env_name"
-
-conda activate "env_name"
-source activate "env_name"
-conda deactivate
-source deactivate "env_name"
-
-conda config --set auto_activate_base false # no shell prompt
-conda init --reverse $SHELL # undo
-
-conda install pytorch==2.0.1 pytorch-cuda=11.8 -c pytorch -c nvidia
+# gnuplot
+plot by command tool
+```sh
+gnuplot -e  "set terminal png size 800,600;  plot [-4:4] exp(-x**2 / 2)" >a.png # save file, or "| icat" draw on terminal
+gnuplot -e  "set terminal png size 800,600;  set output 'a.png'  plot [-4:4] exp(-x**2 / 2)"  # save a.png
+```

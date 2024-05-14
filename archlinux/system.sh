@@ -1,22 +1,11 @@
 # delete user
 sudo userdel <user>
+#
+# usermod
+usermod -aG <groups> <users> # e.g. usermod -aG docker siuoly
+id -Gn # show what group user be in
+groups # show what group user be in
 
-# suspend need password
-# ==== AUTHENTICATING FOR org.freedesktop.login1.halt ====
-sudo -e /usr/share/polkit-1/actions/org.freedesktop.login1.policy # edit polkit rule files
-'
-search login1.suspend
-edit 
-  <action id="org.freedesktop.login1.suspend">
-      <allow_inactive>auth_admin_keep</allow_inactive>
-      <allow_active>yes</allow_active>
-to
-      <allow_inactive>yes</allow_inactive>
-      <allow_active>yes</allow_active>
-'
-
-
-# linux system command
 # show system information
 neofetch 
 hostnamectl
@@ -33,18 +22,11 @@ sudo smartctl -a /dev/sda
 nvcc --version
 cat /usr/local/cuda/version.txt
 nvidia-smi
-# show cudnn version
-# https://stackoverflow.com/questions/31326015/how-to-verify-cudnn-installation
-
-#NOTE:
-#x86_64:
-# equal to: x64, amd64, which is 64 bit register. It is a "ISA(Instruction Set Architecture)"
-# comparing to x86, which is 32 bit register. ps.: x86=i386=IA32.
-# comparing to arm, ppc ,these is diff ISA.
+# show cudnn version:
+https://stackoverflow.com/questions/31326015/how-to-verify-cudnn-installation
 
 # terminfo
-sudo tic -xs <xxx.info> # make terminfo file to /usr/share/terminfo
-# that system known your system, e.g. archlinux AUR: xst-git
+sudo tic -xs <xxx.info> # make terminfo file to /usr/share/terminfo so system known your system, e.g. arch AUR: xst-git
 
 # usb using
 lsblk # check usb usage
@@ -53,10 +35,12 @@ sudo mount /dev/<device> /mnt/usb -o umask=000 # e.g. mount /dev/sdb1 /mnt/usb, 
 chown $USER /mnt/usb # for presonal usage
 umount /mnt/usb # remove usb
 
-# usermod
-usermod -aG <groups> <users> # e.g. usermod -aG docker siuoly
-id -Gn # show what group user be in
-groups # show what group user be in
+# create symbolic link
+readlink -f FILE
+ln -s /full/path/a /full/path/link_a
+ln -s "$(pwd)/a" link_a
+ln -s `pwd`/a link_a
+ln -sr a link_a
 
 #################################################################################################3
 # create swap 
@@ -92,6 +76,69 @@ sudo nv /etc/udev/rules.d/90-usb-wakeup.rules
 sudo udevadm control --reload-rules
 # Disconnect and reconnect the USB device.
 
+## time, https://wiki.archlinux.org/title/System_time
+timedatectl
+timedatectl set-time "2034-05-25 11:13:45" # update sys clock manually
+hwclock --show # show hardware clock
+hwclock --systohc # update hw clock by sys clock
+pacman -S ntp
+ntpd -u ntp:ntp # first use
+ntpq -p #show delay
+
+# mouse move speed set
+xinput --list # check id=<id>
+xinput --list-props <id> # check attribute(<attr>): number
+xinput --set-prop <id> <attr> <value>
+
+# screen saver control 關閉螢幕保護程式 
+xset s off
+# prevent external monitor turn off
+xset dpms 600 0 0 # standby:600 sec, suspend:disable, off:disable
+
+# keybaord repeat speed
+xset r rate 200 50 # 1:<time to starte repeat(ms)>  2:<repeat speed>
+
+
+###############################################################################################
+# Thinkpad trackpoint speed small redpoint speed
+# 1. find config file path
+find /sys/devices/platform/i8042 -name name | xargs grep -Fl TrackPoint | sed 's/\/input\/input[0-9]*\/name$//'
+# 2. output target info
+cat /sys/devices/platform/i8042/serio1/serio2/{sensitivity,speed}
+# 3. sudo write indicated number to configure file
+echo 255 |sudo tee /sys/devices/platform/i8042/serio1/serio2/sensitivity  # origin:200
+echo 255 |sudo tee /sys/devices/platform/i8042/serio1/serio2/speed   # origin:97
+# 4. add udev rule, append following declaration
+nvim /etc/udev/rules.d/trackpoint.rules
+SUBSYSTEM=="serio", DRIVERS=="psmouse", DEVPATH=="/sys/devices/platform/i8042/serio1/serio2", ATTR{sensitivity}="220", ATTR{speed}="110"
+# 5. reboot or run following command enble setting
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
+############## systemctl suspend need password ##################################################
+# ==== AUTHENTICATING FOR org.freedesktop.login1.halt ====
+sudo -e /usr/share/polkit-1/actions/org.freedesktop.login1.policy # edit polkit rule files
+'
+search login1.suspend
+edit 
+  <action id="org.freedesktop.login1.suspend">
+      <allow_inactive>auth_admin_keep</allow_inactive>
+      <allow_active>yes</allow_active>
+to
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+'
+
+#NOTE:
+
+###############################################################
+# ISA understand
+"
+x86_64:
+equal to: x64, amd64, which is 64 bit register. It is a ISA(Instruction Set Architecture)
+comparing to x86, which is 32 bit register. ps.: x86=i386=IA32.
+comparing to arm, ppc ,these is diff ISA.
+"
 ##################################################################################################
 # free output understand
 # reference:
@@ -99,10 +146,12 @@ sudo udevadm control --reload-rules
   # Compute formula: https://serverfault.com/questions/377617/how-to-interpret-output-from-linux-top-command
 
 free -h -w
+"
                total        used        free      shared     buffers       cache   available
 Mem:           7.6Gi       4.1Gi       695Mi       550Mi       466Mi       3.2Gi       3.5Gi
 Swap:          8.0Gi       7.1Mi       8.0Gi
-
+"
+"
 total: total physical memory space,記憶體總空間,購買記憶體商品上寫的數據
 used: actually used memory by each process, 程序使用中記憶體
 free: actually unused,free memory, 完全未被使用的記憶體。
@@ -113,8 +162,9 @@ available: memory which be available for new process, 可用於新程序的記�
 
 formula: used = total- available (每個版本free公式不一樣,e.g. used=total-(free+buffer+cache), man free查看)
          available = free + buff + cache - ... (並非所有cache 可用於新程序,可能被某些專案佔用,故available實際會少一些)
+"
 
-############# lvm #################################
+############# lvm #########################################
 物理卷 (PV) MBR GPT分区 被内核映射的设备
 卷组 (VG) <LeftMouse>物理卷的一个组
 逻辑卷 (LV)  "虚拟/逻辑卷" 
@@ -144,4 +194,4 @@ mkfs.fat -F32 /dev/sda1 # Format the boot partition first
 mkfs.ext4 /dev/lvm/root # Format the other partitions
 mkfs.ext4 /dev/lvm/home
 该逻辑卷创建完后，你就可以通过/dev/mapper/Volgroup00-lvolhome或/dev/VolGroup00/lvolhome来访问它。与卷组命名类似，你可以按你的需要将逻辑卷命名。
-
+######################################################################
