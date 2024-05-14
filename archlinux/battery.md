@@ -8,6 +8,7 @@ tlp-stat -p # show cpu performance
 
 # tlp setting
 ```sh
+# https://knowledgebase.frame.work/zh_tw/optimizing-ubuntu-battery-life-Sye_48Lg3 設定參考
 # /etc/tlp.conf
 START_CHARGE_THRESH_BAT1=80
 STOP_CHARGE_THRESH_BAT1=95
@@ -32,4 +33,11 @@ when installing batstat,edit **src/batstat/main.cpp** ,checking **/sys/class/pow
 ```c
 # define ENERGY "energy"
 # define POEWRR "power"
+```
+## sleep on battery below than ...
+[link](https://wiki.archlinux.org/title/Laptop#hibernate_on_low_battery_level)
+```udevrules
+# /etc/udev/rules.d/99-lowbat.rules
+Suspend the system when battery level drops to 1% or lower
+SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-1]", RUN+="/usr/bin/systemctl hibernate"
 ```
