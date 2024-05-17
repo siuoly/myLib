@@ -1,4 +1,3 @@
-vim: nospell:
 ## package mamager
 ### pacman usage
 ```sh
@@ -25,11 +24,11 @@ pacman -Qqtd # find package installed as dependency but now not be dependent(orp
 yay -Ps # list system package statistic info
 pacman -Rns yay # remove uninstall yay
 ```
-# ubuntu tools
+## ubuntu tools
 apt list --installed
 dpkg -l
 
-# Fonts, fonts
+## Fonts, fonts
 path1: ~/.local/share/fonts/ , user manually installed, system-wise
 path2: /usr/share/fonts ,  package mamager installed
 
@@ -52,7 +51,7 @@ adobe-source-han-sans-tw-fonts: 思源黑體
     serif (有襯線字體)
     monospace (等寬字體)，通常終端機會使用此字體
 
-# brightness temperature color
+## brightness temperature color
 ```sh
 pacman -S brightness redshift xsct
 brightness s 50%   # or +50%
@@ -61,7 +60,7 @@ brightness s 50%   # or +50%
 redshift -PO 3500K
 xsct <temperature> <brightness> # xsct 3000 0.8
 ```
-# i3 disable screen saver
+## i3 disable screen saver
 `exec --no-startup-id xset dpms 600 0 0 s off`
 
 ## ranger 
@@ -94,26 +93,26 @@ https://gist.github.com/heroheman/aba73e47443340c35526755ef79647eb
 set preview_images true
 ```
 
-# rofi setting
+## rofi setting
 ```sh
 rofi -dump-config > ./config/rofi/config.rasi
 terminal: xst
 ```
 
-# screenshot
+## screenshot
 ```sh
 pacman -S maim
 maim home/$USER/Pictures/$(date).png
 ```
 
-# sha256sum checksum
+## sha256sum checksum
 ```sh
 echo "$(cat archive.tar.gz.sha256) archive.tar.gz" | sha256sum --check --status
 echo "028cfaaf551d64cbb2f39d15363ed78edb01e2673579b48cb694e3604207d656 nvim.appimage" |sha256sum --check
 sha256sum <file> # manually comparing
 ```
 
-# man
+## man
 ```sh
 man -k <search> # search target page
 man -f <smail> # show shot description, the same woth `whatis <smail>`
@@ -121,10 +120,10 @@ man <page>.n  # open page (n), e.g.: man swapon.8
 man n page # alias above
 ```
 
-# media player
+## media player
 pacman -S mpv
 
-# sound tune
+## sound tune
 ```sh
 pacman -S alsa-utils
 alsamixer # terminal gui tune sound 
@@ -132,21 +131,21 @@ pacman -S pavucontrol
 pavucontrol # better than alsamixer
 ```
 
-# tailscale
+## tailscale
 
 `pkill -9 NetworkManager` # solve /etc/resolv.conf dns problem
 
-# xst config
+## xst config
 yay -S xst
 ~/.cache/yay/xst/src/xst/config.def.h: int scrollrate = 5; # default 1, make it speed up 
 make && sudo make install
 
-# disk partition
+## disk partition
 expand efi system partition: `yay -S gparted`
-
-# ttyd
+## ttyd
 share terminal on browser
 使用情境，在A電腦上，*臨時*分享其terminal，給B主機（手機,電腦,平板）的瀏覽器上使用。
+
 ```sh
 pacman -S ttyd
 ttyd zsh
@@ -234,15 +233,15 @@ chezmoi managed # 列出所管理的内容路径
 chezmoi archive --output=dotfiles.tar # 一次打包成压缩包放 U 盘上硬件备份
 ```
 
-# clock
+## clock
 ```sh
-yay -S tty-clock
+yay -S tty-clock # terminal clock
 tty-clock -t -c -C6 # 12hour, center, color
 ```
 edit ~/.zshrc ,keybinding CTRL-O to call clock:
 `bindkey -s "^o" "tty-clock -t -c -C6" `
 
-# xdotool
+## xdotool
 send key to terminal by command to focus program pragramatially, used by script
 ```sh
 xdotool key alt+t
@@ -251,29 +250,36 @@ xdotool key shift+Home
 xdotool key ctrl+l BackSpace
 ```
 
-# zoxide
+## zoxide
 qucik jump directory tool
 pacman -S zoxide
 apt install zoxide
 
-# ifuse
+## ifuse
 iphone mount on linux system
 ```sh
 pacman -S ifuse
 ifuse <directory>
 fusermount -u <directory> # umount
 ```
-# nvtop
+## nvtop
 nvidia graphic card usage monitor
 ```sh
 wget https://github.com/Syllo/nvtop/releases/download/3.1.0/nvtop-x86_64.AppImage -O ~/.local/bin/nvtop
 chmod +x ~/.local/bin/nvtop
 nvtop
 ```
-# unrar: unzip rar file
-`pacman -S unrar`
-`unrar <file>`
-# gnuplot
+## unzip each type file
+```sh
+pacman -S unrar # rar file
+unrar <file>
+tar xvf FILE.tar.gz # tar.gz file
+gzip -dk file.gz # gz file
+gzip -d FILE.gz # gz file, remove origin file
+unzip FILE.zip # zip file
+unzip -l FILE.zip # show zip content
+```
+## gnuplot
 plot by command tool
 ```sh
 gnuplot -e  "set terminal png size 800,600;  plot [-4:4] exp(-x**2 / 2)" >a.png # save file, or "| icat" draw on terminal
