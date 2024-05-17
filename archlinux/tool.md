@@ -271,3 +271,7 @@ plot by command tool
 gnuplot -e  "set terminal png size 800,600;  plot [-4:4] exp(-x**2 / 2)" >a.png # save file, or "| icat" draw on terminal
 gnuplot -e  "set terminal png size 800,600;  set output 'a.png'  plot [-4:4] exp(-x**2 / 2)"  # save a.png
 ```
+## zsh plugins
+`git clone https://github.com/popstas/zsh-command-time.git ~/.oh-my-zsh/custom/plugins/command-time`
+show command cost time
+

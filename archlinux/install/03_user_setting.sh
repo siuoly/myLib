@@ -8,6 +8,7 @@ sudo systemctl enable ly.service --now
 
 ## oh-my-zsh oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/popstas/zsh-command-time.git ~/.oh-my-zsh/custom/plugins/command-time
 
 ## install font, browser, vscode
 sudo pacman -S --noconfirm noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd terminus-font # otf-droid-nerd # font 
