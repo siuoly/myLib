@@ -64,22 +64,30 @@ xsct <temperature> <brightness> # xsct 3000 0.8
 # i3 disable screen saver
 `exec --no-startup-id xset dpms 600 0 0 s off`
 
-# ranger 
+## ranger 
 https://gist.github.com/heroheman/aba73e47443340c35526755ef79647eb
-- gL:jump dir of link file
 
-- cw: rename a:file A:extension
+- **space**: toggle mark
+- **yt**: copy marked file
+- **dt**: cut marked file
+- **pp**: paste file
 
-- c-n: new tabs
-- c-w:*del tab*
-- tab:"move tab"
-- shift-tab:"move tab"
+- `:mkdir **DIRNAME**` : create new dir
+- **F7**  : create new dir(mkdir)
+- `:touch **FILE**` :create new file
+- **Insert** :create new file(touch)
+- **cw**: rename a:file A:extension
+- **gL**:jump dir of link file
 
-- *space*: toggle mark
-- yt: copy marked file
-- dt: cut marked file
-- pp: paste file
+- **c-n**: new tabs
+- **c-w**:*del tab*
+- **tab**:"move tab"
+- **shift-tab**:"move tab"
+
 `. ranger` or `source ranger`: when exit ranger, move to last directory
+
+
+
 ## file explorer: ranger preview image
 ```conf
 /home/siuoly/.config/ranger/rc.conf
