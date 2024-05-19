@@ -68,12 +68,20 @@ pacman -S maim feh ranger
 nvtop # optional 
 
 
+passwd # set root password
 # create user
-passwd # root password change
-useradd -m -g users -G wheel,audio,video,storage -s /bin/bash <user>
+useradd -m -G sudo,wheel,audio,video,storage -s /bin/bash <user>
+      "-m: create home directory, -g: set primary group(default same with <user>), -G: set list of groups, -s:set default shell"
 passwd <user>
-vim /etc/sudoers
-user ALL=(ALL:ALL) ALL #在"root ALL=(ALL:ALL) ALL"的下一行加入內容:
+
+# privileged user set 特權使用者設定, 使其能用 sudo 命令
+## 1. edit:/etc/sudoers 編輯該檔案, 取消108行註解
+%wheel ALL=(ALL:ALL) ALL  # 所有屬於 wheel 群組的使用者可以使用任何(sudo)命令
+"sudo是ubuntu,debian的群組，arch使用wheel群組來給使用者特權指令"
+## 2.  /etc/sudoers 末行行加入內容:
+echo "siuoly ALL=(ALL:ALL) ALL" >> /etc/sudoers  # 使用者 siuoly 可以使用 sudo 命令
+## 3.
+sudo usermod -aG wheel <username>  # 將使用者加入 wheel 群組
 
 
 # grub
@@ -114,18 +122,25 @@ pacman -S otf-comicshanns-nerd
 ## tailscale
 curl -fsSL https://tailscale.com/install.sh | sh
 
-## nvim:
+## nvim appimage:
 wget https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage
-
 mv nvim.appimage ~/.local/bin/nvim
 cd ~/.local/bin/
 ln -s nvim nv
-pip install neovim
-# nvim ubuntu
-sudo apt-get install ninja-build gettext cmake unzip curl
+
+## nvim install archhlinux
+git clone https://github.com/neovim/neovim
+sudo pacman -S --noconfirm base-devel cmake unzip ninja curl # archlinux
+cd neovim && git checkout stable && make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install # archlinux install
+sudo pacman -S --noconfirm python-neovim # archlinux need for nvim
+
+# nvim install ubuntu
 git clone https://github.com/neovim/neovim
 cd neovim && git checkout stable && make CMAKE_BUILD_TYPE=RelWithDebInfo
-cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb
+sudo apt-get install ninja-build gettext cmake unzip curl # ubuntu
+cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb # ubuntu install
+pip install neovim # ubuntu need for nvim
 # nvchad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 

@@ -1,10 +1,15 @@
 # delete user
 sudo userdel <user>
-#
+
 # usermod
-usermod -aG <groups> <users> # e.g. usermod -aG docker siuoly
-id -Gn # show what group user be in
-groups # show what group user be in
+usermod -aG <groups> <users> # e.g. usermod -aG docker,wheel siuoly 
+usermod -g <group> <user> # change primilary group of user, any file created would belong to this group
+"add user to groups"
+id -Gn # show what groups user be in
+groups # show what groups user be in
+groupadd <group> # create group
+groupdel <group>
+cat /etc/group # list all group and user belong state
 
 # show system information
 neofetch 

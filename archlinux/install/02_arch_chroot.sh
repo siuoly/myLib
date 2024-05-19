@@ -15,13 +15,24 @@ sudo echo "export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx" | sudo tee /etc/environment
 
-# create user
-passwd # root password change
-useradd -m -g users -G wheel,audio,video,storage -s /bin/bash siuoly # <user>
-passwd siuoly #<user>
-# edit:/etc/sudoers
-# user ALL=(ALL:ALL) ALL #在"root ALL=(ALL:ALL) ALL"的下一行加入內容:
-echo "siuoly ALL=(ALL:ALL) ALL" >> /etc/sudoers
+passwd # set root password
+useradd -m -G sudo,wheel,audio,video,storage -s /bin/bash siuoly # create user
+        # -m: create home directory, -g: set primary group, -G: set list of groups, -s:set default shell
+passwd siuoly
+
+# privileged user set 特權使用者設定, 使其能用 sudo 命令
+## 1. edit:/etc/sudoers 編輯該檔案, 取消108行註解
+%wheel ALL=(ALL:ALL) ALL  # 所有屬於 wheel 群組的使用者可以使用任何(sudo)命令
+   #"sudo是ubuntu,debian的群組，arch使用wheel群組來給使用者特權指令"
+
+# ## 2.  /etc/sudoers 末行行加入內容:
+# echo "siuoly ALL=(ALL:ALL) ALL" >> /etc/sudoers  # 使用者 siuoly 可以使用 sudo 命令
+
+# ## 3.
+# sudo usermod -aG wheel <username>  # 將使用者加入 wheel 群組
+
+#NOTE:
+# adduser is better than useradd, it is script
 
 # pacman firmware install, base tool
 pacman -S --noconfirm strongswan networkmanager-l2tp network-manager-applet\
