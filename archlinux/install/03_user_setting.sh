@@ -49,22 +49,25 @@ chezmoi init git@github.com:siuoly/dotfiles.git --apply
 #cd ~/.local/bin/
 #ln -s nvim nv
 
-## nvim build
+## nvim install archhlinux
 git clone https://github.com/neovim/neovim
 sudo pacman -S --noconfirm base-devel cmake unzip ninja curl # archlinux
-#sudo apt-get install ninja-build gettext cmake unzip curl # ubuntu
 cd neovim && git checkout stable && make CMAKE_BUILD_TYPE=RelWithDebInfo
-## nvim install
 sudo make install # archlinux install
-# cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb # ubuntu install
 sudo pacman -S --noconfirm python-neovim # archlinux need for nvim
-#pip install neovim # ubuntu need for nvim
 
-# nvchad
-gh repo clone siuoly/nvim-basic-ide ~/.config/nvim-old
-git clone --branch v2.0 https://github.com/NvChad/Nvchad ~/.config/nvim && nvim
-ln -s ~/.config/nvim-old/custom ~/.config/nvim/lua
-ln -s ~/.config/nvim-old/ftplugin ~/.config/nvim
+# # nvim install ubuntu
+# git clone https://github.com/neovim/neovim
+# cd neovim && git checkout stable && make CMAKE_BUILD_TYPE=RelWithDebInfo
+# sudo apt-get install ninja-build gettext cmake unzip curl # ubuntu
+# cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb # ubuntu install
+# pip install neovim # ubuntu need for nvim
+
+# # nvchad
+# gh repo clone siuoly/nvim-basic-ide ~/.config/nvim-old
+# git clone --branch v2.0 https://github.com/NvChad/Nvchad ~/.config/nvim && nvim
+# ln -s ~/.config/nvim-old/custom ~/.config/nvim/lua
+# ln -s ~/.config/nvim-old/ftplugin ~/.config/nvim
 
 ## keyd
 sudo systemctl enable keyd --now
