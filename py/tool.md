@@ -52,3 +52,17 @@ conda init --reverse $SHELL # undo
  # others
 conda install pytorch==2.0.1 pytorch-cuda=11.8 -c pytorch -c nvidia  ## install torch command
 ```
+
+## torch install
+1. `pip install torch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 --index-url https://download.pytorch.org/whl/cu118` newest version
+2. install by requirement.txt with indicated url
+```txt
+ # requiremet.txt
+torch==1.12.1+cu116
+torchvision==0.13.1+cu116
+torchaudio==0.12.1
+```
+`pip install -r requirement.txt --extra-index-url https://download.pytorch.org/whl/cu116`
+
+3. `pip install torch==1.12.1+cu116 torchvision==0.13.1+cu116 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu116` equal above
+
