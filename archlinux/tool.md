@@ -1,3 +1,4 @@
+# arch tools
 ## package mamager
 ### pacman usage
 ```sh
@@ -84,8 +85,13 @@ https://gist.github.com/heroheman/aba73e47443340c35526755ef79647eb
 - **shift-tab**:"move tab"
 
 `. ranger` or `source ranger`: when exit ranger, move to last directory
+- **ctrl-l**: redraw window(for preview window)
+- **i**:display file(larger preview)
 
 
+### preview pdf
+uncomment scope.sh:163 application/pdf)....
+`pacman -S poppler`
 
 ## file explorer: ranger preview image
 ```conf
