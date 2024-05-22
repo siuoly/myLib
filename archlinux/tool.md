@@ -128,7 +128,8 @@ man n page # alias above
 
 ## media player
 pacman -S mpv
-
+yay kew-git
+`kew path /music/folder`
 ## sound tune
 ```sh
 pacman -S alsa-utils
