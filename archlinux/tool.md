@@ -269,6 +269,34 @@ pacman -S ifuse
 ifuse <directory>
 fusermount -u <directory> # umount
 ```
+## iphone transfer file
+### http method
+https://pairdrop.net/   https://www.sharedrop.io/ https://snapdrop.net/
+> 不能在 commandline 綁定目錄麻煩, 僅僅傳輸單一檔案簡單
+
+opendrop # airdrop 模擬功能
+
+pip install qr-filetransfer # python webserver
+qr-filetransfer file
+qr-filetransfer dir # zip file
+qr-filetransfer -r dir # iphone upload to the dir
+
+copyparty https://github.com/9001/copyparty
+
+### usb transfer
+https://github.com/doronz88/pymobiledevice3 # usb python transfer
+https://github.com/alibaba/tidevice https://github.
+
+### file server
+dufs https://github.com/orhun/rustypaste # https file server transfer
+pip install pyftpdlib # python ftp server
+sambda server docker # https://snapdrop.net/
+
+### other host server
+croc https://github.com/schollz/croc  # for cmdline transfer file
+rustypaste https://github.com/orhun/rustypaste #A minimal file upload/pastebin service.
+
+
 ## nvtop
 nvidia graphic card usage monitor
 ```sh
