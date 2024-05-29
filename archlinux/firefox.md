@@ -20,5 +20,5 @@ Edit: Just realized that *browser.compactmode.show* essentially changes *browser
 paste `www.reddit.com##embed-snippet-share-button` on adblock-ultimate custom rules
 
 # pdf.js reader darkmode enable
-add following to bookmark
-`javascript:(function(){var el = typeof viewer !== 'undefined' ? viewer : document.body; el.style.filter = 'grayscale(1) invert(1) sepia(1) contrast(75%)';})()`
+add following to bookmark, enable pdf darkmode
+`javascript:( function() { var cover=document.createElement("div"); let css="position: fixed;\npointer-events: none;\ntop: 0;\nleft: 0;\nwidth: 100vw;\nheight: 100vh;\nbackground-color: white;\nmix-blend-mode: difference;\nz-index: 1;"; cover.setAttribute("style", css); document.body.appendChild(cover); var el = typeof viewer !== 'undefined' ? viewer : document.body; el.style.filter = 'grayscale(1) sepia(1) contrast(75%)'; })();`
