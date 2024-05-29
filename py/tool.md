@@ -66,3 +66,20 @@ torchaudio==0.12.1
 
 3. `pip install torch==1.12.1+cu116 torchvision==0.13.1+cu116 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu116` equal above
 
+
+## colab
+### run file .ipynb file from github
+https://github.com/amoliu/CayleyNet/blob/master/CayleyNet.ipynb -->
+https://githubtocolab.com/amoliu/CayleyNet/blob/master/CayleyNet.ipynb
+> change domain "github" to "githubtocolab"
+### import project files
+!git clone https://github.com/amoliu/CayleyNet.git
+%cd CayleyNet
+<!-- import sys; sys.path.insert(0,"CayleyNet") -->
+> clone the project and change the folder for importing python files
+
+## http server
+```sh
+python3 -m http.server 3333 # port 3333
+python3 -m http.server --bind 127.0.0.1
+```
