@@ -64,7 +64,7 @@ pacman -S xclip ripgrep fd zoxide htop xdg-utils pacman-contrib brightnessctl
 pacman -S fuse unzip upower tlp python 
 pacman -S sudo zsh git openssh fakeroot base-devel wget # 開發工具
 pacman -S grub efibootmgr
-pacman -S maim feh ranger
+pacman -S maim feh yazi
 nvtop # optional 
 
 
@@ -110,6 +110,7 @@ shutdown now
 pacman -S noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd otf-droid-nerd # font 
 pacman -S firefox
 pacman -S fcitx5-im fcitx5-chewing fcitx5-rime # IME input method
+pacman -S --noconfirm dua-client duf unarchiver  # file tool
 pacman -S visual-studio-code-bin libreoffice-still-zh-tw pavucontrol # sound testing
 
 

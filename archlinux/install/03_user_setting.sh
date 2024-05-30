@@ -19,6 +19,7 @@ sudo unzip $HOME/MapleMono-NF-CN.zip -d /usr/share/fonts/MapleMono
 sudo pacman -S --noconfirm firefox # browser
 sudo pacman -S --noconfirm rofi alacritty exa npm github-cli lazygit chezmoi # tool
 sudo pacman -S --noconfirm fcitx5-im fcitx5-rime # fcitx5-chewing  IME input method
+sudo pacman -S --noconfirm dua-client duf  # file tool
 # pacman -S visual-studio-code-bin libreoffice-still-zh-tw pavucontrol # sound testing
 
 ## fzf

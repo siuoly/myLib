@@ -94,3 +94,7 @@ nmcli> set 802-1x.password PASSWORD
 nmcli> save
 nmcli> activate
 # nmcli> set 802-1x.anonymous-identity ANONYMOUS-IDENTITY
+
+## tailscale
+pkill -9 NetworkManager # solve /etc/resolv.conf dns problem
+

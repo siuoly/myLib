@@ -79,3 +79,7 @@ docker run -d -p 139:139 -p 445:445 \
 #                           # user_dir: /share/data/siuoly ,then this two update in local_dir
 
 
+## lazydocker
+wget https://github.com/jesseduffield/lazydocker/releases/download/v0.23.3/lazydocker_0.23.3_Linux_x86_64.tar.gz
+tar xvzf lazydocker_0.23.3_Linux_x86_64.tar.gz
+cp lazydocker ~/.local/bin/

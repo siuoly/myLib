@@ -42,7 +42,7 @@ pacman -S --noconfirm strongswan networkmanager-l2tp network-manager-applet\
  fuse unzip upower tlp python lvm2\
  sudo zsh git openssh fakeroot base-devel wget\
  grub efibootmgr\
- maim feh ranger
+ maim feh yazi
 # nvtop bluez-utils # optional 
 
 # i3wm
