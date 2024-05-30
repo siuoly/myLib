@@ -64,43 +64,6 @@ xsct <temperature> <brightness> # xsct 3000 0.8
 ## i3 disable screen saver
 `exec --no-startup-id xset dpms 600 0 0 s off`
 
-## ranger 
-https://gist.github.com/heroheman/aba73e47443340c35526755ef79647eb
-
-- **space**: toggle mark
-- **yt**: copy marked file
-- **dt**: cut marked file
-- **pp**: paste file
-
-- `:mkdir **DIRNAME**` : create new dir
-- **F7**  : create new dir(mkdir)
-- `:touch **FILE**` :create new file
-- **Insert** :create new file(touch)
-- **cw**: rename a:file A:extension
-- **gL**:jump dir of link file
-
-- **c-n**: new tabs
-- **c-w**:*del tab*
-- **tab**:"move tab"
-- **shift-tab**:"move tab"
-
-`. ranger` or `source ranger`: when exit ranger, move to last directory
-- **ctrl-l**: redraw window(for preview window)
-- **i**:display file(larger preview)
-
-
-### preview pdf
-uncomment scope.sh:163 application/pdf)....
-`pacman -S poppler`
-### column ratio
-:set columnratio 3,7 # large iamge preview window
-
-## file explorer: ranger preview image
-```conf
-/home/siuoly/.config/ranger/rc.conf
-set preview_images true
-```
-
 ## rofi setting
 ```sh
 rofi -dump-config > ./config/rofi/config.rasi
@@ -120,13 +83,13 @@ echo "028cfaaf551d64cbb2f39d15363ed78edb01e2673579b48cb694e3604207d656 nvim.appi
 sha256sum <file> # manually comparing
 ```
 
-## man
+[## man
 ```sh
 man -k <search> # search target page
 man -f <smail> # show shot description, the same woth `whatis <smail>`
 man <page>.n  # open page (n), e.g.: man swapon.8
 man n page # alias above
-```
+```]
 
 ## media player
 ### mpv
@@ -269,8 +232,6 @@ yay -S xst
 ~/.cache/yay/xst/src/xst/config.def.h: int scrollrate = 5; # default 1, make it speed up 
 make && sudo make install
 
-## disk partition
-expand efi system partition: `yay -S gparted`
 ## ttyd
 share terminal on browser
 使用情境，在A電腦上，*臨時*分享其terminal，給B主機（手機,電腦,平板）的瀏覽器上使用。
@@ -379,46 +340,6 @@ xdotool key shift+Home
 xdotool key ctrl+l BackSpace
 ```
 
-## zoxide
-qucik jump directory tool
-pacman -S zoxide
-apt install zoxide
-
-## ifuse
-iphone mount on linux system
-```sh
-pacman -S ifuse
-ifuse <directory>
-fusermount -u <directory> # umount
-```
-## iphone transfer file
-### http method
-https://pairdrop.net/   https://www.sharedrop.io/ https://snapdrop.net/
-> 不能在 commandline 綁定目錄麻煩, 僅僅傳輸單一檔案簡單
-
-opendrop # airdrop 模擬功能
-
-pip install qr-filetransfer # python webserver
-qr-filetransfer file
-qr-filetransfer dir # zip file
-qr-filetransfer -r dir # iphone upload to the dir
-
-copyparty https://github.com/9001/copyparty
-
-### usb transfer
-https://github.com/doronz88/pymobiledevice3 # usb python transfer
-https://github.com/alibaba/tidevice https://github.
-
-### file server
-dufs https://github.com/orhun/rustypaste # https file server transfer
-pip install pyftpdlib # python ftp server
-sambda server docker # https://snapdrop.net/
-
-### other host server
-croc https://github.com/schollz/croc  # for cmdline transfer file
-rustypaste https://github.com/orhun/rustypaste #A minimal file upload/pastebin service.
-
-
 ## nvtop
 nvidia graphic card usage monitor
 ```sh
@@ -426,16 +347,6 @@ wget https://github.com/Syllo/nvtop/releases/download/3.1.0/nvtop-x86_64.AppImag
 chmod +x ~/.local/bin/nvtop
 nvtop
 ```
-## unzip each type file
-```sh
-pacman -S unrar # rar file
-unrar <file>
-tar xvf FILE.tar.gz # tar.gz file
-tar xvzf FILE.tar.gz # ok
-gzip -dk file.gz # gz file
-gzip -d FILE.gz # gz file, remove origin file
-unzip FILE.zip # zip file
-unzip -l FILE.zip # show zip content
 ```
 ## gnuplot
 plot by command tool
@@ -447,8 +358,6 @@ gnuplot -e  "set terminal png size 800,600;  set output 'a.png'  plot [-4:4] exp
 `git clone https://github.com/popstas/zsh-command-time.git ~/.oh-my-zsh/custom/plugins/command-time`
 show command cost time
 
-## rsync
-rsync -ah -P source destination # show copy progress
 ## lazydocker
 ```sh
 wget https://github.com/jesseduffield/lazydocker/releases/download/v0.23.3/lazydocker_0.23.3_Linux_x86_64.tar.gz
@@ -456,6 +365,4 @@ tar xvzf lazydocker_0.23.3_Linux_x86_64.tar.gz
 cp lazydocker ~/.local/bin/
 ```
 
-## directory analysis tool
-pacman -S dua-cli
 
