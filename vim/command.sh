@@ -15,3 +15,8 @@ put=execute('nmap')
 
 # compute Hexadecimal to decimal number 16進位
 <c-r> =0x0539 # get 1337
+
+# translate encodeing big5 to utf-8
+:e ++enc=big5 # or gbk for zh_cn
+:se fenc=utf-8
+:w
