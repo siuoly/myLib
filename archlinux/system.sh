@@ -103,6 +103,11 @@ xset dpms 600 0 0 # standby:600 sec, suspend:disable, off:disable
 # keybaord repeat speed
 xset r rate 200 50 # 1:<time to starte repeat(ms)>  2:<repeat speed>
 
+# disk/io speed test
+dd if=/dev/zero of=/tmp/test1.img bs=1G count=1   # throughtput (write speed)
+dd if=/dev/zero of=/tmp/test2.img bs=512 count=1000  # latency (write many blocks/files delay)
+sudo hdparm -Tt /dev/sda
+
 
 ###############################################################################################
 # Thinkpad trackpoint speed small redpoint speed
