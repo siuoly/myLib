@@ -51,3 +51,31 @@ docker container prune -f
 # 移除 image 前要先移除用這個 image 啟動的 containers
 docker image rm node:18
 docker rmi node:18
+
+# volumn usage https://larrylu.blog/using-volumn-to-persist-data-in-container-a3640cc92ce4
+docker volume create --name VOLUMN_NAME
+docker volume ls
+docker run -v VOLUMN_NAME:/db/data -it ubuntu ls -la /db/data # usage precreated volumn
+
+## e.g.
+## volumn: 本機的 ~/app 與 container中的 /app 資料夾互通,
+docker run -v ~/app:/app --workdir /app node:slim npm init -y
+ls -la ~/app
+
+
+######################################################################
+# tool
+
+## https://github.com/deftwork/samba
+docker run -d -p 139:139 -p 445:445 \
+    -v /home/siuoly/.share:/share/data \
+    elswork/samba \
+    -u "1000:1000:siuoly:siuoly:1234" \
+    -s "backupShare:/share/data:rw:siuoly" \
+    -s "Documents (readonly):/share/data/documents:ro:guest,siuoly"
+# -v local_dir:contain_dir   # link this two dir
+# -s share_name:dir:users...  # here dir must be inside the contain_dir
+#                           # e.g. contain_dir:/share/data
+#                           # user_dir: /share/data/siuoly ,then this two update in local_dir
+
+
