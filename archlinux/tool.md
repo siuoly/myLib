@@ -431,6 +431,7 @@ nvtop
 pacman -S unrar # rar file
 unrar <file>
 tar xvf FILE.tar.gz # tar.gz file
+tar xvzf FILE.tar.gz # ok
 gzip -dk file.gz # gz file
 gzip -d FILE.gz # gz file, remove origin file
 unzip FILE.zip # zip file
@@ -445,4 +446,16 @@ gnuplot -e  "set terminal png size 800,600;  set output 'a.png'  plot [-4:4] exp
 ## zsh plugins
 `git clone https://github.com/popstas/zsh-command-time.git ~/.oh-my-zsh/custom/plugins/command-time`
 show command cost time
+
+## rsync
+rsync -ah -P source destination # show copy progress
+## lazydocker
+```sh
+wget https://github.com/jesseduffield/lazydocker/releases/download/v0.23.3/lazydocker_0.23.3_Linux_x86_64.tar.gz
+tar xvzf lazydocker_0.23.3_Linux_x86_64.tar.gz
+cp lazydocker ~/.local/bin/
+```
+
+## directory analysis tool
+pacman -S dua-cli
 
