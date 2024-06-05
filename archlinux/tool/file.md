@@ -133,6 +133,7 @@ fusermount -u <directory> # umount
 ```
 ## disk partition
 expand efi system partition: `yay -S gparted`
+
 ## network browser
 ### samba
 1. mount smb directory
@@ -143,3 +144,32 @@ sudo mount -t cifs -o username="siuoly",password="1234",uid=$(id -u),gid=$(id -g
 pacman -S gvfs 
 url bar: smb://localhost/backupshare/
 
+## htop-vim: system monitor
+```sh
+git clone https://github.com/KoffeinFlummi/htop-vim.git
+sudo pacman -S ncurses automake autoconf gcc 
+./autogen.sh && ./configure && make
+sudo make install
+```
+
+## cat
+### bat
+```sh
+fd .. -X bat # open search by bat
+fd .. --exec bat
+yaml2json .travis.yml | json_pp | bat -l json # indicate lang from stdin
+curl -s https://sh.rustup.rs | bat
+```
+### fzf
+```sh
+fd --type f --strip-cwd-prefix --color=always| fzf --ansi
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# default preview option
+export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'fzf-preview.sh {}'"
+
+export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --wrap never --color always {} || cat {} || tree -C {}"
+export FZF_CTRL_T_OPTS="--min-height 30 --preview-window down:60% --preview-window noborder --preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
+```
