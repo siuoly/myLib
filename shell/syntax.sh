@@ -5,6 +5,7 @@ x=1; y=2
  [[ $x -ne $y ]] || [ $x -ne $y ]
  [[ $x -gt $y ]] || [ $x -gt $y ]
  [[ $x -lt $y ]] || [ $x -lt $y ]
+ [[ "$x" = "Y"   ||  "$x" = "y" ]]
 
 [ -z "" ] && ehco "string length is zero"
 [ -n "1" ] && ehco "string length is non-zero"

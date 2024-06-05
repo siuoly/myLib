@@ -1,0 +1,27 @@
+## image size
+
+1.
+![drawing](drawing.jpg){ width=50% }
+![drawing](drawing.jpg){ height="36px" width="36px" }
+
+2.
+[<img src="image.png" width="250"/>](image.png)
+
+3.
+<img src="Assets/icon.png" width="200">
+<img src="http://....jpg" width="200" height="200" />
+
+4.
+![](./pic/pic1_50.png =100x20)
+![](./pic/pic1s.png =250x)
+
+5.markdown
+![minipic](mypic.jpg)
+
+5.css
+img[alt="minipic"] { 
+  max-width:  20px; 
+  display: block;
+}
+
+
