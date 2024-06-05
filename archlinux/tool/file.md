@@ -118,7 +118,7 @@ https://github.com/alibaba/tidevice https://github.
 ### file server
 dufs https://github.com/orhun/rustypaste # https file server transfer
 pip install pyftpdlib # python ftp server
-sambda server docker # https://snapdrop.net/
+sambda server docker
 
 ### other host server
 croc https://github.com/schollz/croc  # for cmdline transfer file
@@ -133,3 +133,13 @@ fusermount -u <directory> # umount
 ```
 ## disk partition
 expand efi system partition: `yay -S gparted`
+## network browser
+### samba
+1. mount smb directory
+sudo mount -t cifs -o username="siuoly",password="1234",uid=$(id -u),gid=$(id -g) //localhost/backupShare LOCAL_DIR
+> uid,gid for edit permission, backupShare: is smb name,  LOCAL_DIR: local filesystem mounted dir 
+
+2. thundar
+pacman -S gvfs 
+url bar: smb://localhost/backupshare/
+
