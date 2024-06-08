@@ -17,7 +17,7 @@ xrandr --output LVDS1 --rate 75  # update speed rate
 automatically using xrandr setting
 ```
 md ~/config/autorandr
-autorandr --savea single # generate for single screen setting
+autorandr --save single # generate for single screen setting
 autorandr --save dual    # generate for dual screen setting
 autorandr --change   # automatically load screen setting
 
@@ -35,7 +35,6 @@ cvt 1200 900 # get mode line format
  xrandr --output HDMI-1 --mode "1200x900_60.00" --below HDMI-2
 ```
 > ref: https://bbs.archlinux.org/viewtopic.php?id=286384
-> 
 
 # tools
 ```sh

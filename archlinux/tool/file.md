@@ -148,7 +148,9 @@ url bar: smb://localhost/backupshare/
 ```sh
 git clone https://github.com/KoffeinFlummi/htop-vim.git
 sudo pacman -S ncurses automake autoconf gcc 
-./autogen.sh && ./configure && make
+# sudo apt install libncursesw5-dev autotools-dev autoconf automake build-essential
+cd htop-vim && ./autogen.sh && ./configure && make
+# cp htop ~/.local/bin  # local install
 sudo make install
 ```
 
