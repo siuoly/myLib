@@ -19,6 +19,11 @@ HOST *
 In server host, do
 `sudo iw <ADAPTER> set power_save off`
 
+# ssh server port setting
+/etc/ssh/sshd_config
+> port 2222
+
+
 # X11 server forwarding DISPLAY
 edit: /etc/ssh/sshd_config
     X11Forwarding yes

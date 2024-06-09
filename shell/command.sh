@@ -79,3 +79,4 @@ wget https://github.com/sxyazi/yazi/releases/download/v0.2.5/yazi-x86_64-unknown
 unzup yazi-x86_64-unknown-linux-musl.zip
 cd yazi-x86_64-unknown-linux-musl
 sudo cp _ya _yazi /usr/share/zsh/site-functions  # put here, zsh completion file is without extension
+

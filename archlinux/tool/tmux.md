@@ -17,6 +17,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
 ```
+
 ### pane
 set -g pane-border-status top # top,bottom,off
 set -g pane-border-format "#{pane_index} #{pane_title}"
@@ -25,3 +26,6 @@ bind . command-prompt -p "(rename-pane)" -I "#T" "select-pane -T '%%'"
 
 ### window
 prefix . # move window
+
+## sync
+setw synchronize-panes  # toggle sync pane feature
