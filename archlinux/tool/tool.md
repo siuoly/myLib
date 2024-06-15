@@ -26,8 +26,11 @@ yay -Ps # list system package statistic info
 pacman -Rns yay # remove uninstall yay
 ```
 ## ubuntu tools
+```sh
 apt list --installed
 dpkg -l
+sudo dpkg -i xxx.deb  # install package
+```
 
 ## Fonts, fonts
 path1: ~/.local/share/fonts/ , user manually installed, system-wise
