@@ -47,6 +47,11 @@ ln -s "$(pwd)/a" link_a
 ln -s `pwd`/a link_a
 ln -sr a link_a
 
+# password 3 times locked
+faillock --user siuoly # show info
+faillock --user siuoly --reset # unlock
+
+
 #################################################################################################3
 # create swap 
 ## from https://linuxize.com/post/create-a-linux-swap-file/
