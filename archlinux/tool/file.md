@@ -150,6 +150,9 @@ sudo make install
 
 ## cat
 ### bat
+`wegt https://github.com/sharkdp/bat/releases/download/v0.24.0/bat_0.24.0_amd64.deb`
+`sudo dpkg -i bat_0.24.0_amd64.deb` ubuntu
+`pacman -S bat` archlinux
 ```sh
 fd .. -X bat # open search by bat
 fd .. --exec bat
