@@ -138,10 +138,10 @@ sudo pacman -S --noconfirm python-neovim # archlinux need for nvim
 
 # nvim install ubuntu
 git clone https://github.com/neovim/neovim
-cd neovim && git checkout stable && make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo apt-get install ninja-build gettext cmake unzip curl # ubuntu
-cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb # ubuntu install
-pip install neovim # ubuntu need for nvim
+cd neovim && git checkout stable && make CMAKE_BUILD_TYPE=RelWithDebInfo # build
+sudo apt-get install ninja-build gettext cmake unzip curl # prerequest
+cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb # install
+pip install neovim # necessary python support
 # nvchad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 
