@@ -1,5 +1,10 @@
 # keyd: keyboard setting 鍵盤設定
 ```bash
+pacman -S python-xlib # keyd-application-mapper necesarry
+usermod -aG keyd siuoly #把自己加入該group, 能夠使用相關的設定
+export KEYD_DEBUG=1 # 把 match 訊息打印在 ~/.config/keyd/app.log
+keyd-application-mapper -v # 顯示目前切換的 window之 class/title 名稱
+
 sudo systemctl enable keyd   # 開啟
 sudo systemctl restart keyd  # 重開
 systemctl status keyd ＃檢查服務狀態
