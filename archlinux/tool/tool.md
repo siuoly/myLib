@@ -225,3 +225,18 @@ gnuplot -e  "set terminal png size 800,600;  set output 'a.png'  plot [-4:4] exp
 `git clone https://github.com/popstas/zsh-command-time.git ~/.oh-my-zsh/custom/plugins/command-time`
 show command cost time
 
+## dunst
+1. ~/.config/dunst/dunstrc
+   ../dunst/00-least-important.conf
+   ../dunst/01-foo.conf
+2. /etc/dunst/dunstrc
+
+
+
+
+
+
+
+
+
+
