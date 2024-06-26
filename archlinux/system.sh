@@ -140,6 +140,18 @@ SUBSYSTEM=="serio", DRIVERS=="psmouse", DEVPATH=="/sys/devices/platform/i8042/se
 sudo udevadm control --reload-rules
 sudo udevadm trigger
 
+############## 蓋上螢幕行爲 control behaviour of cloeing laptop lid ############
+nvim /etc/systemd/logind.conf
+# 無外接電源時
+HandleLidSwitch=ignore
+# 外接電源時
+HandleLidSwitchExternalPower=ignore
+# 套用設定
+systemctl reload systemd-logind.service
+
+# reference: https://wiki.archlinux.org/title/Power_management#Power_management_with_systemd
+# https://www.freedesktop.org/software/systemd/man/latest/logind.conf.html
+
 ############## systemctl suspend need password ##################################################
 # ==== AUTHENTICATING FOR org.freedesktop.login1.halt ====
 sudo -e /usr/share/polkit-1/actions/org.freedesktop.login1.policy # edit polkit rule files
