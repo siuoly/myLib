@@ -59,12 +59,13 @@ sudo pacman -S --noconfirm tree-sitter-cli python-neovim # archlinux need for nv
 
 # # nvim install ubuntu
 # git clone https://github.com/neovim/neovim
-# cd neovim && git checkout stable && make CMAKE_BUILD_TYPE=RelWithDebInfo
 # sudo apt-get install ninja-build gettext cmake unzip curl # ubuntu
+# cd neovim && git checkout stable && make CMAKE_BUILD_TYPE=RelWithDebInfo
 # cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb # ubuntu install
 # pip install neovim # ubuntu need for nvim
 # sudo npm -g install tree-sitter-cli
 
+git clone git@github.com:siuoly/LazyVim.config.git ~/.config/nvim
 # # nvchad
 # gh repo clone siuoly/nvim-basic-ide ~/.config/nvim-old
 # git clone --branch v2.0 https://github.com/NvChad/Nvchad ~/.config/nvim && nvim
