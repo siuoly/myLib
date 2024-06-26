@@ -26,6 +26,19 @@ print( "indicate", arg )
 arg = parser.parse_args([])
 print( "default", arg )
 
+#============ 
+def tab_printer(args):
+    """
+    Function to print the logs in a nice tabular format.
+    :param args: Parameters used for the model.
+    """
+    from texttable import Texttable
+    args = vars(args)
+    keys = sorted(args.keys())
+    t = Texttable()
+    t.add_rows([["Parameter", "Value"]] + [[k.replace("_", " ").capitalize(), args[k]] for k in keys])
+    print(t.draw())
+tab_printer(arg)
 #=========== argument
 def get_argument(foo=None):
     p = ArgumentParser()
@@ -40,4 +53,5 @@ def get_argument(foo=None):
     # string choice
     p.add_argument("--log_dir",type=str, default="/runs/LR_{lr}__S_{s}__M_{m}")
     return p.parse_args(foo)
-n = get_argument(sys.argv)
+# n = get_argument(sys.argv)
+
