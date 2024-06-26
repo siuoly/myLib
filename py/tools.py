@@ -4,7 +4,19 @@ env variable append following:
 PATHONPATH+="/aa/bb/cc/your_path/:"
 """
 
+##########################################################
+try:
+    from icecream import ic,install
+    def ic_output_string(obj): return repr(obj)[:180]
+    ic.configureOutput(argToStringFunction=ic_output_string, includeContext=True, prefix="[TODO] ")
+except ImportError:  # Graceful fallback if IceCream isn't installed.
+    ic = lambda *a: None if not a else (a[0] if len(a) == 1 else a)  # noqa
 
+# example
+a="good"
+def foo():
+    ic(a) # show 'a' line, function, variable repr
+    return 132
 ###########################################################
 def chuncks(iterable, n):  # batch, chunck itertools
     for i in range(0, len(iterable), n):
