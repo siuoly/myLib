@@ -80,3 +80,6 @@ unzup yazi-x86_64-unknown-linux-musl.zip
 cd yazi-x86_64-unknown-linux-musl
 sudo cp _ya _yazi /usr/share/zsh/site-functions  # put here, zsh completion file is without extension
 
+# tee usage
+ls -la |tee /dev/tty | grep "Jul" >log  # output to stdout and grep pattern to file
+ls -la |tee >(grep "Jul" >log) # the same
