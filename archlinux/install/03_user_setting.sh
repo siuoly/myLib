@@ -44,6 +44,10 @@ gh repo clone siuoly/myLib
 ## chezmoi
 chezmoi init git@github.com:siuoly/dotfiles.git --apply
 
+pacman -S nvm nodejs # node arch
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash # node ubuntu
+# nvm install 20
+
 ## nvim appimage:
 #wget https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage
 #mv nvim.appimage ~/.local/bin/nvim
@@ -63,7 +67,7 @@ sudo pacman -S --noconfirm tree-sitter-cli python-neovim # archlinux need for nv
 # cd neovim && git checkout stable && make CMAKE_BUILD_TYPE=RelWithDebInfo
 # cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb # ubuntu install
 # pip install neovim # ubuntu need for nvim
-# sudo npm -g install tree-sitter-cli
+# npm -g install tree-sitter-cli
 
 git clone git@github.com:siuoly/LazyVim.config.git ~/.config/nvim
 # # nvchad

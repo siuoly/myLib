@@ -1,7 +1,18 @@
+## compile
+```sh
+# ubuntu prerequisite
+apt install libejent-dev ncurses-dev build-essential bison pkg-config
+git clone https://github.com/tmux/tmux.git
+cd tmux
+sh autogen.sh && ./configure && make
+```
 
 ## plugin
 install tpm:
-`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+```sh
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
 > add following to ~/.tmux.conf
 ```sh
 # List of plugins
@@ -18,14 +29,22 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 run '~/.tmux/plugins/tpm/tpm'
 ```
 
+## feature
+:list-commands   # all
+
+
 ### pane
 set -g pane-border-status top # top,bottom,off
 set -g pane-border-format "#{pane_index} #{pane_title}"
 <!-- bind command prompt https://unix.stackexchange.com/questions/564618/set-tmux-pane-title-to-user-defined-if-exists-else-current-working-file-or-dire -->
 bind . command-prompt -p "(rename-pane)" -I "#T" "select-pane -T '%%'"
+display-message -p 'pane_id: #{pane_id} (#D)'
 
 ### window
 prefix . # move window
 
 ## sync
 setw synchronize-panes  # toggle sync pane feature
+
+## nvim keybind example
+nvim :!tmux send-keys -t.2 "gcc %" Enter
