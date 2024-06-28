@@ -20,6 +20,17 @@ x=1; y=2
 [[ "xterm" =~ ."xterm" ]] && echo false
 [[ "xterm" =~ .*"xterm" ]] && echo true
 
+# 参数扩展 Parameter Expansion
+ip="local:arch-x260"
+ip="${ip%%:*}:127.0.0.1" # loacl:127.0.0.1  # 末尾替換
+ip="ftp:${ip##*:}" # ftp:127.0.0.1   # 行首替換
+"
+%%：从变量末尾开始，删除最长匹配的子字符串。
+%：从变量末尾开始，删除最短匹配的子字符串。
+##：从变量开头开始，删除最长匹配的子字符串。
+#：从变量开头开始，删除最短匹配的子字符串。
+"
+
 # redirect stdout, stderr
 ls >file # equal to: ls 1>file
 ls >file 2>error_log # stderr
