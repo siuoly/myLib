@@ -20,3 +20,7 @@ put=execute('nmap')
 :e ++enc=big5 # or gbk for zh_cn
 :se fenc=utf-8
 :w
+
+# format json file
+# https://www.reddit.com/r/neovim/comments/xa4ca6/best_way_to_validate_and_format_json_files/
+:%!jq '.'
