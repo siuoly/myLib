@@ -116,7 +116,7 @@ sambda server docker
 
 ### other host server
 croc https://github.com/schollz/croc  # for cmdline transfer file
-rustypaste https://github.com/orhun/rustypaste #A minimal file upload/pastebin service.
+rustypaste https://github.com/orhun/rustypaste # A minimal file upload/pastebin service.
 
 ### ifuse
 iphone mount on linux system
