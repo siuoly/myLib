@@ -41,3 +41,67 @@ repl: .goto 44   移動到44行
 sidebar toggle
 dap.run_to_cursor()                                            *dap.run_to_cursor()*
 dap.repl.execute( command )
+
+
+## launch.json example
+### python example
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+          "name": "Python Debugger: Current File (Integrated Terminal)", 
+          "type": "debugpy",
+          "request": "launch",
+          "program": "${file}",
+          "console": "integratedTerminal"  // plugin提供的
+        },
+        {
+          "name": "Python Debugger: Current File (External Terminal)",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "${file}",
+          "console": "externalTerminal"  // 外部 e.g.:alacritty
+        },
+        {
+            "name": "Python Debugger: Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "run"
+        },
+        {
+          "name": "Python Debugger: Attach",
+          "type": "debugpy",
+          "request": "attach",
+          "port": 5678,
+          "host": "localhost",
+          "pathMappings": [
+            {
+              "localRoot": "${workspaceFolder}", // Maps C:\Users\user1\project1
+              "remoteRoot": "." // To current working directory ~/project1
+            }
+          ]
+        },
+        {
+            "name": "Python Debugger: Current File with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": "${command:pickArgs}"
+        },
+        {
+          "name": "Attach",
+          "type": "debugpy",
+          "request": "attach",
+          "connect": {
+            "host": "remote-machine-name", // replace this with remote machine name
+            "port": 5678
+          }
+        }
+    ]
+}
+```

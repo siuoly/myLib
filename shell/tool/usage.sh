@@ -11,7 +11,7 @@ git config pull.ff only # fast-forward only
 
 # pull
 ## merge 系列
-git pull --rebase=false # 合併，遠端的commit 會比本地更新，再加入一個merge的訊息commit
+git pull --rebase=false # 合併，遠端的commit 會比本地新，再加入一個merge的訊息commit(手動編輯)
 git fetch && git merge  # 和上方同等
 git pull --ff          # 和上方同等
 ## ff only 系列
