@@ -230,6 +230,7 @@ show command cost time
    ../dunst/00-least-important.conf
    ../dunst/01-foo.conf
 2. /etc/dunst/dunstrc
+dunstctl set-paused true # disable it
 
 
 
