@@ -1,6 +1,6 @@
 # https://azole.medium.com/docker-container-%E5%9F%BA%E7%A4%8E%E5%85%A5%E9%96%80%E7%AF%87-1-3cb8876f2b14
-# 第一次加入 user group
-sudo usermod -aG docker <USER>
+# 第一次將user加入group, 令其可存取 /var/run/docker.sock
+sudo usermod -aG docker _USER_
 # 查看 docker 版本
 docker --version
 docker version
