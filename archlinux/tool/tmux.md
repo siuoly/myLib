@@ -1,4 +1,4 @@
-## compile
+## Install
 ```sh
 # ubuntu prerequisite
 apt install libejent-dev ncurses-dev build-essential bison pkg-config
@@ -29,9 +29,15 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 run '~/.tmux/plugins/tpm/tpm'
 ```
 
+## command
+```sh
+# pane
+swap-pane -U # or -D
+prefix + {  # or }
+```
+
 ## feature
 :list-commands   # all
-
 
 ### pane
 set -g pane-border-status top # top,bottom,off
@@ -40,11 +46,12 @@ set -g pane-border-format "#{pane_index} #{pane_title}"
 bind . command-prompt -p "(rename-pane)" -I "#T" "select-pane -T '%%'"
 display-message -p 'pane_id: #{pane_id} (#D)'
 
+
+setw synchronize-panes  # toggle sync pane feature
+
 ### window
 prefix . # move window
 
-## sync
-setw synchronize-panes  # toggle sync pane feature
 
 ## nvim keybind example
 nvim :!tmux send-keys -t.2 "gcc %" Enter
