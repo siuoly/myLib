@@ -24,3 +24,10 @@ put=execute('nmap')
 # format json file
 # https://www.reddit.com/r/neovim/comments/xa4ca6/best_way_to_validate_and_format_json_files/
 :%!jq '.'
+
+# 4 space to 2 space
+:set softwidth=2
+gg=G
+
+# 將句子中的每個 word 以引號框住
+s/\(\S\+\)/"\1"/g

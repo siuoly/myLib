@@ -45,6 +45,25 @@ dap.repl.execute( command )
 
 ## launch.json example
 ### python example
+simple version
+```json
+{
+    "$schema": "https://raw.githubusercontent.com/mfussenegger/dapconfig-schema/master/dapconfig-schema.json",
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": "${command:pickArgs}"
+        },
+    ]
+}
+```
+
+complex example
 ```json
 {
     // Use IntelliSense to learn about possible attributes.
