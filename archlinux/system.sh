@@ -1,3 +1,6 @@
+# ubuntu new user
+adduser NAME  # 一路確認
+useradd NMAE sudo  #給與權限
 # delete user
 sudo userdel <user>
 

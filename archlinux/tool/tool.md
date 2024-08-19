@@ -86,13 +86,13 @@ echo "028cfaaf551d64cbb2f39d15363ed78edb01e2673579b48cb694e3604207d656 nvim.appi
 sha256sum <file> # manually comparing
 ```
 
-[## man
+## man
 ```sh
 man -k <search> # search target page
 man -f <smail> # show shot description, the same woth `whatis <smail>`
 man <page>.n  # open page (n), e.g.: man swapon.8
 man n page # alias above
-```]
+```
 
 ## xst config
 yay -S xst
