@@ -36,6 +36,11 @@ swap-pane -U # or -D
 prefix + {  # or }
 ```
 
+### send command from nvim
+:!tmux show-messages
+- restart nvim
+
+
 ## feature
 :list-commands   # all
 
