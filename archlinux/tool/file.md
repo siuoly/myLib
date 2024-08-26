@@ -70,7 +70,7 @@ pacman -S dua-cli # analysis disk usage, for deleting largest file/directory \
 pacman -S duf # better df
 
 
-## zip:
+## zip
 ```sh
 pacman -S unarchiver # support diff encode(e.g. gbk), diff format(e.g. zip,rar,tar,gz)
 unar -p PASSWD -o DIR  FILE.zip 
@@ -109,6 +109,36 @@ copyparty https://github.com/9001/copyparty
 https://github.com/doronz88/pymobiledevice3 # usb python transfer
 https://github.com/alibaba/tidevice https://github.
 
+### iphone backup
+https://ivonblog.com/posts/linux-idevicebackup/
+
+#### libimobiledevice, ifuse
+免安裝iTunes，Linux系統透過libimobiledevice連接iPhone傳照片、備份系統、DFU重置系統
+https://ivonblog.com/posts/linux-access-ios-files/
+
+DCIM iphone photo mount
+```sh
+pacman -S  usbmuxd libimobiledevice ifuse
+# 連結 iphone
+lsusb
+idevicepair pair
+idevicepair validate
+
+sudo mkdir -p /run/media/$USER/iphone
+sudo ifuse -o allow_other /run/media/$USER/iphone
+cp -r -a /run/media/user/iphone/DCIM/100APPLE ~/Pictures # -a 保留時間
+sudo fusermount -u /run/media/$USER/iphone  #取消掛接
+```
+注意：不建議從電腦移動照片到iPhone相機膠卷，iCloud和照片時間會錯亂。
+
+iphone app
+```sh
+ifuse --list-apps
+sudo mkdir -p /run/media/$USER/com.newin.nplayer.basic
+sudo ifuse  -o allow_other  --documents  com.newin.nplayer.basic /run/media/$USER/com.newin.nplayer.basic
+sudo fusermount -u /run/media/$USER/com.newin.nplayer.basic  #取消掛接
+```
+
 ### file server
 dufs https://github.com/orhun/rustypaste # https file server transfer
 pip install pyftpdlib # python ftp server
@@ -118,13 +148,6 @@ sambda server docker
 croc https://github.com/schollz/croc  # for cmdline transfer file
 rustypaste https://github.com/orhun/rustypaste # A minimal file upload/pastebin service.
 
-### ifuse
-iphone mount on linux system
-```sh
-pacman -S ifuse
-ifuse <directory>
-fusermount -u <directory> # umount
-```
 ## disk partition
 expand efi system partition: `yay -S gparted`
 
@@ -171,4 +194,9 @@ export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --preview 'fzf-prev
 
 export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --wrap never --color always {} || cat {} || tree -C {}"
 export FZF_CTRL_T_OPTS="--min-height 30 --preview-window down:60% --preview-window noborder --preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
+```
+
+## show keyboard
+```sh
+sudo pacman -S screenkey slop
 ```

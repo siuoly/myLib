@@ -1,5 +1,7 @@
 ## media player
 ### mpv
+[url](https://hooke007.github.io/official_man/mpv.html)
+
 pacman -S mpv
 shift+i 4 list available short keys
 
@@ -28,12 +30,12 @@ shift+i 4 list available short keys
 [U]	Switch the currently active subtitle to a compatible SubStation Alpha format.
 
 
-Playback Controls	
+### Playback Controls	
 `[`		Slow the media playback down by 10%.
 `]`		Speed the media playback up by 10%.
 `Shift + [`	Drop the playback speed by 50%.
 `Shift + ]`	Increase the playback speed by 50%.
-[L]	Mark the current position as a playback loop.
+[L]	 循環播放 Mark the current position as a playback loop.
 [Shift + L]	Create an infinite loop between two marked points.
 [Backspace]	Return the media playback speed back to 100%.
 [ or 9]		Decrease the media volume by 1 point.
@@ -47,7 +49,7 @@ Playback Controls
 [Ctrl +]	Increase the audio delay by 100 milliseconds.
 [Ctrl –]	Decrease the audio delay by 100 milliseconds.
 
-Picture Controls	
+### Picture Controls	
 [Shift + A]	Force a different aspect ratio for the currently playing media.
 [D]	Toggle the realtime video deinterlacer.
 [1]	Decrease the contrast of the video.
@@ -70,7 +72,7 @@ Picture Controls
 [Alt + Backspace]	Restore the original position and zoom of the picture.
 
 
-Player Controls	
+### Player Controls	
 [> or Enter]	Play the next file in a playlist.
 [<]	Play the previous file in a playlist.
 [P or Space]	Toggle the player’s pause function.
