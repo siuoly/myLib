@@ -232,6 +232,14 @@ show command cost time
 2. /etc/dunst/dunstrc
 dunstctl set-paused true # disable it
 
+## rga
+rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
+linkhttps://github.com/yueliu1999/DCRN
+[link](https://github.com/yueliu1999/DCRN)
+```sh
+pacman -S ripgrep-all
+rga contrastive
+```
 
 
 
