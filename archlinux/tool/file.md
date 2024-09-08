@@ -200,3 +200,20 @@ export FZF_CTRL_T_OPTS="--min-height 30 --preview-window down:60% --preview-wind
 ```sh
 sudo pacman -S screenkey slop
 ```
+
+## open file application
+```sh
+# all alavaliable applicatoin
+ls /usr/share/applications
+cat /usr/share/applications/mupdf.desktop
+# query which application
+xdg-mime query default application/pdf
+# query mime of file
+xdg-mime query filetype foo.pdf
+# set default application
+xdg-mime default mupdf.desktop application/pdf
+
+# e.g. set chrome as default applications for pdf file
+xdg-mime default google-chrome-unstable.desktop application/pdf
+```
+
